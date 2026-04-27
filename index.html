@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stomy | Developer & Creator</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Compelling font stack:
+       Cormorant Garamond — editorial display serif (headings)
+       Syne              — geometric, distinctive UI sans (body)
+       JetBrains Mono    — clean monospace (labels, code, tags) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome brands (GitHub, LinkedIn, WhatsApp, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Lucide Icons (used elsewhere) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION BAR
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <a class="nav-brand" onclick="navigateTo('home')" href="#home">
+  
+      <span class="brand-name">Advocate</span>
+    </a>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     class="nav-link active" data-page="home">Home</a></li>
+        <li><a href="#about"    class="nav-link"        data-page="about">About</a></li>
+        <li><a href="#skills"   class="nav-link"        data-page="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link"        data-page="projects">Projects</a></li>
+        <li><a href="#beyond"   class="nav-link"        data-page="beyond">Beyond</a></li>
+        <li><a href="#connect"  class="nav-link"        data-page="connect">Connect</a></li>
+      </ul>
+
+      <!-- Dark / Light theme toggle -->
+      <button id="themeToggle" title="Toggle theme" aria-label="Toggle dark/light mode">
+        🌙
+      </button>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════
+       HOME PAGE
+  ═══════════════════════════════════════ -->
+  <section id="home" class="page page-home active">
+
+    <!-- Blurred B&W background -->
+    <div class="home-bg">
+      <div class="home-bg-img">
+    <! --  Edited in css to set background-image: url('Asserts/GradMe.jpeg') and adjust filters for better clarity while maintaining the blurred effect -->
+      </div>
+      <div class="home-bg-overlay"></div>
+    </div>
+
+    <div class="home-grid">
+
+      <!-- LEFT — Avatar + social icons -->
+      <div class="home-avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-circle">
+            <img
+              src="Asserts/Profile.JPG"
+              alt="Advocate Karabo"
+              class="avatar-img"
+            />
+          </div>
+        </div>
+
+        
+        <div class="avatar-socials">
+          <a href="https://github.com/Advoo" target="_blank" class="social-icon si-github" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/advocate-karabo-7550122b3" target="_blank" class="social-icon si-linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://wa.me/0656275687" target="_blank" class="social-icon si-whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:advocatekarabo09@gmail.com" class="social-icon si-email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="Asserts/CV.pdf" download class="social-icon si-cv" title="Download CV">
+            <i class="fas fa-file-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT — Bio glass card sitting on blurred bg -->
+      <div class="home-bio">
+        <p class="home-greeting">Hi There <span class="wave">👋</span></p>
+
+        <h1 class="home-name">I'm <span class="name-highlight">Advocate</span></h1>
+
+        <div class="home-roles">
+          <span class="role-tag">Full Stack Dev</span>
+          <span class="role-divider">·</span>
+          <span class="role-tag">Aspiring AI Engineer</span>
+          <span class="role-divider">·</span>
+          <span class="role-tag">Photographer</span>
+        </div>
+
+        <p class="home-tagline">
+          Second-year Computer Science student at UWC , building real projects,
+          contributing to community, and learning in public.
+        </p>
+
+        <blockquote class="home-quote">
+          "The best way to predict the future is to write backwards."
+          <cite>— Alan Kay</cite>
+        </blockquote>
+
+        <div class="home-cta">
+          <a href="#projects" class="btn btn-primary" onclick="navigateTo('projects')">See My Work</a>
+          <a href="#connect"  class="btn btn-outline" onclick="navigateTo('connect')">Get In Touch</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section id="about" class="page page-about">
+    <div class="page-header">
+      <p class="section-label"> section A</p>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-sub">The story so far — still unfolding.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Currently pursuing a degree in Computer Science at <strong>University of the Western Cape (UWC)</strong>. I am focused on building structured, scalable systems that translate ideas into practical, usable products. My approach is grounded in system thinking—understanding how components interact, optimizing for efficiency, and designing with long-term evolution in mind.
+          
+Beyond technical implementation, I have a strong inclination toward design. I am interested in creating solutions that are not only functional but also refined, intuitive, and personally meaningful. This perspective led to the development of Novar, a concept shaped around delivering systems that feel deliberate, cohesive, and purpose-driven rather than merely operational.
+
+I work across the full lifecycle of software development—from conceptual modeling and architecture to implementation—while maintaining a clear emphasis on clarity, performance, and user experience. My goal is to contribute to environments where innovation is expected, systems are thoughtfully engineered, and products are built to endure.
+
+I am particularly motivated by opportunities that combine technical depth with creative direction, where engineering decisions directly influence how people interact with and experience technology.
+
+        </p>
+        <p>
+          My technical roots run deep in Artificial Intelligencen , but my interests are broad. I am fascinated by how AI can be integrated into products to enhance human capabilities and solve <strong>real-personal problems <strong>. I am actively exploring machine learning frameworks and techniques, with a focus on how they can be applied in practical, user-centric ways.
+        </p>
+        <p>
+          Beyond the terminal, I carry a camera. Through
+          <strong>Stomy Photography</strong>, I've walked into rooms with
+          entrepreneurs, founders, and creatives — documenting their
+          workshops and events. Every lens shift taught me something a
+          textbook couldn't.
+        </p>
+        <p>
+          I believe technology and community are not separate. That's why I
+          actively contribute to <strong>GKSS at UWC</strong> and serve as a Secretary, helping to organise events and initiatives that connect students with opportunities. I'm also a proud recipient of the <strong>Moshal Scholarship</strong>, which has been instrumental in my academic journey. As part of that, I took on the role of              
+          <strong>Moshal Outreach Champion</strong> — because the next
+          developer who changes things might just need someone who showed
+          up first.
+        </p>
+      </div>
+
+      <div class="about-visual">
+
+        <!-- Blurred portrait banner -->
+        <div class="vis-banner">
+          <div class="vis-banner-bg"></div>
+          <div class="vis-banner-content">
+            <p class="vis-banner-tag">// in motion</p>
+            <p class="vis-banner-sub">Code &middot; Lead &middot; Inspire</p>
+          </div>
+        </div>
+
+        <!-- Staggered identity circles -->
+        <div class="vis-circles">
+
+          <div class="vis-circle-item vis-circle-item--left">
+            <div class="vis-circle">
+              
+              <img src="Asserts/CS.jpeg" alt="Programming & building" />
+            </div>
+            <span class="vis-circle-label">Code &amp; Build</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--right">
+            <div class="vis-circle vis-circle--lg">
+              <img src="Asserts/LD.jpeg" alt="Leadership & community" />
+            </div>
+            <span class="vis-circle-label">Lead &amp; Serve</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--mid">
+            <div class="vis-circle">
+             
+              <img src="Asserts/PSHT.jpeg" alt="Photography & storytelling" />
+            </div>
+            <span class="vis-circle-label">Capture &amp; Story</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--right">
+            <div class="vis-circle vis-circle--lg">
+              <img src="Asserts/Moshal.jpeg" alt="Opportunities & Network" />
+            </div>
+            <span class="vis-circle-label">Opportunities &amp; Network</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SKILLS & EXPERIENCE
+  ═══════════════════════════════════════ -->
+  <section id="skills" class="page page-skills">
+    <div class="page-header">
+      <p class="section-label"> 02</p>
+      <h2 class="section-title">Skills & Experience</h2>
+      <p class="section-sub">Where tools met real problems.</p>
+    </div>
+
+    <div class="skills-toggle">
+      <button class="toggle-btn active" id="btnTech"     onclick="switchSkills('tech')">Technical</button>
+      <button class="toggle-btn"        id="btnPersonal" onclick="switchSkills('personal')">Personal</button>
+    </div>
+
+    <!-- TECHNICAL -->
+    <div id="skillsTech" class="skills-panel active">
+      <div class="skills-cards">
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="terminal"></i></div>
+          <h4>Linux & CLI</h4>
+          <p>Daily driver. Used across project environments, scripting, file
+          management, and server configuration. </p>
+          <div class="skill-where">
+            <span class="badge">Portfolio Server</span>
+            <span class="badge">Dev Environment</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="code-2"></i></div>
+          <h4>Python</h4>
+          <p>Used for scripting, automation, and data manipulation in academic
+          projects. Clean syntax that rewards structured thinking.</p>
+          <div class="skill-where">
+            <span class="badge">Academic Projects</span>
+            <span class="badge">Automation Scripts</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="coffee"></i></div>
+          <h4>Java</h4>
+          <p>Core language in CS curriculum. Applied in OOP principles, data
+          structures, and algorithm coursework.</p>
+          <div class="skill-where">
+            <span class="badge">University Coursework</span>
+            <span class="badge">OOP Design</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="globe"></i></div>
+          <h4>HTML / JavaScript</h4>
+          <p>Front-end foundation. Built and deployed real websites — this portfolio
+          and the Joe Designs Carpentry page — from scratch, with no templates.</p>
+          <div class="skill-where">
+            <span class="badge">This Portfolio</span>
+            <span class="badge">Joe Designs Web</span>
+            <span class="badge">GitHub Pages</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="git-branch"></i></div>
+          <h4>Git & GitHub</h4>
+          <p>Version control for all projects. Public repositories, commit
+          discipline, and collaborative workflows.</p>
+          <div class="skill-where">
+            <span class="badge">All Projects</span>
+            <span class="badge">Open Source</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="server"></i></div>
+          <h4>Node.js (Learning)</h4>
+          <p>Building backend API understanding. Applied in this portfolio's
+          contact/links server as a practical learning exercise.</p>
+          <div class="skill-where">
+            <span class="badge">Portfolio Backend</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PERSONAL -->
+    <div id="skillsPersonal" class="skills-panel">
+      <div class="skills-cards">
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="users"></i></div>
+          <h4>Leadership & Initiative</h4>
+          <p>Contributing actively to <strong>GKSS at UWC</strong>, I've learned
+          that leadership isn't a title — it's showing up consistently. From
+          organising community efforts to being a voice in student spaces,
+          initiative has become a habit.</p>
+          <div class="skill-where">
+            <span class="badge">GKSS UWC</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/GKSS.png" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/GKSS.png" alt="GKSS UWC Certificate" />
+              <span class="cert-item-label">GKSS UWC — Certificate of Participation</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="heart-handshake"></i></div>
+          <h4>Moshal Program</h4>
+          <p>As a <strong>Moshal Recipient</strong>, I am gaining more than academic support through mentorship, industry exposure, real-world experiences, and a community of ambitious, high-performing individuals</p>
+          <div class="skill-where">
+            <span class="badge">Moshal Scholarship</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/Moshal.jpeg" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/Moshal.jpeg" alt="Moshal Outreach Champion" />
+              <span class="cert-item-label">Moshal Scholarship — Outreach Champion</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="camera"></i></div>
+          <h4>Visual Storytelling</h4>
+          <p>Through <strong>Stomy Photography</strong>, I've documented events,
+          workshops, and entrepreneurial gatherings. Every shoot put me in the
+          room — watching how founders communicate, how spaces are designed, how to work with clients and deliver value, how
+          moments are framed. That visual literacy now gave me a closer relationships with clients, corparate in real-world scenarios , make profit and how to work under pressure.</p>
+          <div class="skill-where">
+            <span class="badge">Stomy Photography</span>
+            <span class="badge">Entrepreneur Events</span>
+            <span class="badge">Graduations</span>
+            <span class="badge">Corporate Events</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="award"></i></div>
+          <h4>Volunteerism and Initiatives</h4>
+          <p>Contributed to technical operations at major events, including <strong>Presidential Gold Challenge</strong> the Presidential Golf Challenge, delivering under pressure to ensure seamless execution. Engaged in workshops and industry-focused events, gaining practical exposure and building connections within a network of driven, like-minded individuals</p>
+          <div class="skill-where">
+            <span class="badge">Presidential Gold Challenge</span>
+            <span class="badge">Geekulcha Student Society</span>
+            <span class="badge">StartUp Grind</span>
+            <span class="badge">Univerity of Western Cape</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/PGC.jpeg" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/PGC.jpeg" alt="Presidential Gold Challenge Certificate" />
+              <span class="cert-item-label">Presidential Gold Challenge — Certificate</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════ -->
+  <section id="projects" class="page page-projects">
+    <div class="page-header">
+      <p class="section-label">Section C</p>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Built from scratch. Deployed in the real world.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-number">Portfolio</div>
+        <div class="project-meta">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+        <h3 class="project-title">Personal Portfolio Website</h3>
+        <p class="project-desc">
+          The site you're on right now. Built as Task 1 of the Future Interns
+          Full Stack programme — but treated as a real product. Multi-page
+          layout, dual theme, responsive design, and a Node.js backend.
+        </p>
+        <div class="project-links">
+          <!-- GitHub repo URL -->
+          <a href="https://github.com/Advoo/FUTURE_FS_01.git" class="project-link" target="_blank"><i data-lucide="github"></i> GitHub</a>
+          <a href="#" class="project-link" target="_blank"><i data-lucide="external-link"></i> Live</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-number">Business Website</div>
+        <div class="project-meta">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+        <h3 class="project-title">Joe Designs — Carpentry Studio</h3>
+        <p class="project-desc">
+          A professional business webpage for Joe Designs, a local carpentry
+          studio. Built to showcase craftsmanship and convert visitors to
+          clients — warm material aesthetic, clean typography, contact section.
+          GitHub link coming once final version is deployed.
+        </p>
+        <div class="project-links">
+          <!-- REPLACE href with your GitHub repo URL when ready -->
+          <a href="#" class="project-link project-link--pending" target="_blank">
+            <i data-lucide="github"></i> GitHub
+          </a>
+          <a href="#" class="project-link project-link--pending" target="_blank">
+            <i data-lucide="external-link"></i> Live
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card project-card--featured">
+        <div class="project-number">Platform</div>
+        <div class="project-badge">Current</div>
+        <div class="project-meta"><span class="project-tag">TBD</span></div>
+        <h3 class="project-title">Novar ✦</h3>
+        <p class="project-desc">
+          A Personal AI OS that streamline daily tasks and enhance productivity by being proactive rather than reactive.
+        </p>
+        <div class="project-links">
+          <a href="#connect" class="project-link" onclick="navigateTo('connect')">
+            <i data-lucide="zap"></i> Follow the build →
+          </a>
+        </div>
+      </article>
+
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       BEYOND ACADEMICS — Stomy Photography
+  ═══════════════════════════════════════ -->
+  <section id="beyond" class="page page-beyond">
+    <div class="page-header">
+      <p class="section-label">Section D</p>
+      <h2 class="section-title">Beyond Professionalism</h2>
+      <p class="section-sub">Photographer and Content Creator.</p>
+    </div>
+
+    <p class="gallery-intro">
+      Photography gave me access to rooms I wouldn't otherwise enter. Entrepreneur
+      workshops, community events, pitch sessions — I showed up with a camera and
+      left with perspective. These are some of those moments. The people, the energy,
+      the work that happens outside lecture halls.
+    </p>
+
+    <div class="photo-grid">
+
+      <div class="photo-item">
+        <img src="Asserts/1-IMG_0078.jpg" alt="Event photography 1" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/2-IMG_7360.jpg" alt="Event photography 2" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/3-IMG_8365.jpg" alt="Event photography 3" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/4-IMG_6820.jpg" alt="Event photography 4" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/5-IMG_6042.jpg" alt="Event photography 5" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/6-image00005.jpg" alt="Event photography 6" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/7-image00022.jpg" alt="Event photography 7" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/8-IMG_1581.jpg" alt="Event photography 8" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/me.jpeg" alt="Photographer 1" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/1-IMG_2802.jpg" alt="Event photography 9" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/2-IMG_7383.jpg" alt="Event photography 10" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/3-IMG_8514.jpg" alt="Event photography 11" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/4-IMG_8374.jpg" alt="Event photography 12" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/5-IMG_6371.jpg" alt="Event photography 13" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/6-IMG_8628.jpg" alt="Event photography 14" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/7-IMG_6820.jpg" alt="Event photography 15" />
+      </div>
+
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CONNECT
+  ═══════════════════════════════════════ -->
+  <section id="connect" class="page page-connect">
+    <div class="page-header">
+      <p class="section-label">Section E</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Real conversations. Real opportunities.</p>
+    </div>
+
+    <!-- Novar Introduction -->
+    <div class="novar-block">
+      <div class="novar-label">Collarb with me</div>
+      <h3 class="novar-title">Novar <span class="novar-spark">✦</span></h3>
+      <p class="novar-desc">
+       <strong>Novar</strong> is a project where I’m building intelligent, user-centered systems that turn personal behavior into practical insights for better focus and performance. I’m open to collaborating if you’re interested in building something meaningful in this space.
+      </p>
+      <p class="novar-cta-text">
+        If you're a developer, designer, entrepreneur, or someone who cares
+        about building things that matter — I want to hear from you.
+      </p>
+    </div>
+
+    <!-- Message Box -->
+    <div class="message-box">
+      <div class="message-box__header">
+        <span class="message-box__label">start a conversation</span>
+        <h3 class="message-box__title">Send me a message</h3>
+        <p class="message-box__sub">Straight to WhatsApp &mdash; Get back to you within 24 hours.</p>
+      </div>
+      <div class="message-box__prompts">
+        <button class="msg-chip" data-msg="Hi Advocate, I'd love to collaborate on Novar with you.">Collaborate on Novar</button>
+        <button class="msg-chip" data-msg="Hi, I saw your portfolio and wanted to reach out.">Just connecting</button>
+        <button class="msg-chip" data-msg="Hi Advocate, I have an opportunity I think you'd be great for.">Talk opportunities</button>
+        <button class="msg-chip" data-msg="Hi, I'm a developer interested in contributing to one of your projects.">Developer interest</button>
+      </div>
+      <div class="message-box__compose">
+        <textarea class="msg-textarea" id="msgTextarea" placeholder="Write your message here…" rows="7"></textarea>
+        <button class="msg-send" id="msgSendBtn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+          <i data-lucide="arrow-up-right" class="msg-send-arrow"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Connect Links -->
+    <div class="connect-grid">
+
+      <a href="https://wa.me/0656275687" target="_blank" class="connect-card connect-card--whatsapp">
+        <div class="connect-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">WhatsApp</span>
+          <span class="connect-hint">Quickest way to reach me</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
+      <a href="https://linkedin.com/in/advocate-karabo-7550122b3" target="_blank" class="connect-card connect-card--linkedin">
+        <div class="connect-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">LinkedIn</span>
+          <span class="connect-hint">Professional profile & updates</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
+      <a href="mailto:advocatekarabo09@gmail.com" class="connect-card connect-card--email">
+        <div class="connect-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">Email</span>
+          <span class="connect-hint">For longer conversations</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
+      <a href="https://github.com/Advoo" target="_blank" class="connect-card connect-card--github">
+        <div class="connect-icon"><i class="fa-brands fa-github"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">GitHub</span>
+          <span class="connect-hint">See how I think in code</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
+      <a href="Asserts/CV.pdf" download class="connect-card connect-card--accent">
+        <div class="connect-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">Download CV</span>
+          <span class="connect-hint">PDF — updated 2026</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
+    </div>
+
+    <footer class="site-footer">
+      <p>Built by Advocate Karabo &middot; 2026 &middot; Powered by curiosity and vision</p>
+    </footer>
+
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Icons ────────────────────────────────
+    lucide.createIcons();
+
+    // ── Theme toggle ─────────────────────────
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+
+    // ── Page navigation ───────────────────────
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks_ul = document.getElementById('navLinks');
+
+    function navigateTo(pageId) {
+      pages.forEach(p => p.classList.remove('active'));
+      navLinks.forEach(l => l.classList.remove('active'));
+
+      const target = document.getElementById(pageId);
+      if (target) target.classList.add('active');
+
+      const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+      if (activeLink) activeLink.classList.add('active');
+
+      navLinks_ul.classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(link.getAttribute('data-page'));
+      });
+    });
+
+    // Catch href="#" links that reference pages
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const pageId = a.getAttribute('href').replace('#', '');
+        const target = document.getElementById(pageId);
+        if (target && target.classList.contains('page')) {
+          e.preventDefault();
+          navigateTo(pageId);
+        }
+      });
+    });
+
+    // ── Mobile nav toggle ─────────────────────
+    document.getElementById('navToggle').addEventListener('click', () => {
+      navLinks_ul.classList.toggle('open');
+    });
+
+    // ── Skills toggle ─────────────────────────
+    function switchSkills(type) {
+      document.getElementById('skillsTech').classList.toggle('active', type === 'tech');
+      document.getElementById('skillsPersonal').classList.toggle('active', type === 'personal');
+      document.getElementById('btnTech').classList.toggle('active', type === 'tech');
+      document.getElementById('btnPersonal').classList.toggle('active', type === 'personal');
+    }
+
+    // ── Navbar scroll shadow ──────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Re-render icons after page transitions (Lucide needs this)
+    document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+
+    // ── Message Box — WhatsApp compose ───────────
+    (function () {
+      const WA = 'https://wa.me/27656275687?text=';
+      const chips = document.querySelectorAll('.msg-chip');
+      const textarea = document.getElementById('msgTextarea');
+      const btn = document.getElementById('msgSendBtn');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          textarea.value = chip.dataset.msg;
+          textarea.focus();
+          chips.forEach(c => c.classList.remove('msg-chip--active'));
+          chip.classList.add('msg-chip--active');
+        });
+      });
+
+      btn.addEventListener('click', () => {
+        const text = textarea.value.trim();
+        if (!text) {
+          textarea.focus();
+          textarea.classList.add('msg-textarea--error');
+          setTimeout(() => textarea.classList.remove('msg-textarea--error'), 700);
+          return;
+        }
+        window.open(WA + encodeURIComponent(text), '_blank');
+      });
+    })();
+  </script>
+
+</body>
+</html>
