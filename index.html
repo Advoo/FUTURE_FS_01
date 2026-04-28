@@ -654,62 +654,75 @@ I am particularly motivated by opportunities that combine technical depth with c
     </footer>
 
 <script>
-/* CURSOR */
-const c=document.getElementById('cur'),co=document.getElementById('cur-o');
-let mx=0,my=0,ox=0,oy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px'});
-(function l(){ox+=(mx-ox)*.13;oy+=(my-oy)*.13;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(l)})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
-
-/* NAV */
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>32));
-
-/* MOBILE */
-function tm(){document.getElementById('mob').classList.toggle('open')}
-function cm(){document.getElementById('mob').classList.remove('open')}
-
-/* REVEAL */
-const ob=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
-},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.reveal,.pj-card,.sk-card').forEach(el=>ob.observe(el));
-
-/* Stagger */
-document.querySelectorAll('.sk-grid .sk-card').forEach((c,i)=>c.style.transitionDelay=i*.09+'s');
-document.querySelectorAll('.pj-grid .pj-card').forEach((c,i)=>c.style.transitionDelay=i*.1+'s');
-document.querySelectorAll('.id-cards .id-card').forEach((c,i)=>{
-  c.classList.add('reveal');c.style.transitionDelay=i*.08+'s';ob.observe(c);
-});
-
-/* Hero entrance */
-window.addEventListener('load',()=>{
-  document.querySelectorAll('#hero .reveal').forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('in'),i*150+280);
+/* ── PAGE NAVIGATION ── */
+function navigateTo(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(page);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === page);
   });
-});
-
-/* CONTACT */
-function send(e){
-  e.preventDefault();
-  const btn=document.getElementById('cb'),st=document.getElementById('cs');
-  btn.textContent='Sending…';btn.disabled=true;
-  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      name:document.getElementById('fn').value,
-      email:document.getElementById('fe').value,
-      subject:document.getElementById('fs').value,
-      message:document.getElementById('fm').value
-    })
-  }).catch(()=>({})).finally(()=>{
-    st.style.display='block';
-    st.textContent='✓ Message received. I will be in touch.';
-    document.getElementById('cf').reset();
-    btn.textContent='Send Message →';btn.disabled=false;
-  });
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo(0, 0);
 }
+
+document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    navigateTo(link.dataset.page);
+  });
+});
+
+/* ── MOBILE MENU ── */
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ── SKILLS TOGGLE ── */
+function switchSkills(type) {
+  document.getElementById('skillsTech').classList.toggle('active', type === 'tech');
+  document.getElementById('skillsPersonal').classList.toggle('active', type === 'personal');
+  document.getElementById('btnTech').classList.toggle('active', type === 'tech');
+  document.getElementById('btnPersonal').classList.toggle('active', type === 'personal');
+}
+
+/* ── THEME TOGGLE ── */
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeToggle').textContent = isDark ? '☀️' : '🌙';
+});
+
+/* ── NAVBAR SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('solid', scrollY > 32);
+});
+
+/* ── WHATSAPP MESSAGE BOX ── */
+document.querySelectorAll('.msg-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.getElementById('msgTextarea').value = chip.dataset.msg;
+  });
+});
+
+document.getElementById('msgSendBtn').addEventListener('click', () => {
+  const msg = document.getElementById('msgTextarea').value.trim();
+  if (!msg) return;
+  window.open('https://wa.me/27656275687?text=' + encodeURIComponent(msg), '_blank');
+});
+
+/* ── REVEAL ANIMATIONS ── */
+const ob = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.reveal, .project-card, .skill-card').forEach(el => ob.observe(el));
+
+document.querySelectorAll('.skill-card').forEach((el, i) => el.style.transitionDelay = i * 0.09 + 's');
+document.querySelectorAll('.project-card').forEach((el, i) => el.style.transitionDelay = i * 0.1 + 's');
+
+/* ── LUCIDE ICONS ── */
+lucide.createIcons();
 </script>
 </body>
 </html>
