@@ -1,1030 +1,783 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advocate Karabo Tladi — AI Engineer · Director · Builder</title>
-  <meta name="description" content="Aspiring AI Engineer at UWC. Co-associate at Stomy Photography. Director at Aution — Cape Town's intelligent mobility company. Building at the intersection of intelligence and human experience."/>
-  <meta name="keywords" content="Advocate Karabo Tladi, AI Engineer, UWC, Aution Mobility, Stomy Photography, Cape Town, Full Stack Developer"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --ink:       #0a0908;
-      --ink-2:     #1b1916;
-      --ink-3:     #2c2924;
-      --ash:       #4d4840;
-      --dust:      #8a7e72;
-      --fog:       #c2b6a8;
-      --parchment: #ede7de;
-      --paper:     #f7f3ed;
-      --white:     #fdfbf8;
-      --oak:       #6b3d1e;
-      --mahogany:  #9b5a2d;
-      --amber:     #c78a44;
-      --gold:      #d4a259;
-      --gold-pale: #e6cf9a;
-      --gold-ghost:#f2e9d6;
-      --serif:     'Cormorant Garamond', Georgia, serif;
-      --sans:      'Syne', system-ui, sans-serif;
-      --mono:      'JetBrains Mono', monospace;
-      --ease:      cubic-bezier(0.16,1,0.3,1);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--sans);background:var(--paper);color:var(--ink-3);line-height:1.65;overflow-x:hidden;cursor:none}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    button{cursor:none;border:none;background:none;font-family:inherit}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stomy | Developer & Creator</title>
+  <link rel="stylesheet" href="style.css" />
 
-    /* CURSOR */
-    #cur{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-    #cur-o{position:fixed;width:28px;height:28px;border:1px solid var(--amber);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:all .3s var(--ease)}
-    .hov #cur{width:16px;height:16px}
-    .hov #cur-o{width:50px;height:50px;opacity:.2}
+  <!-- Compelling font stack:
+       Cormorant Garamond — editorial display serif (headings)
+       Syne              — geometric, distinctive UI sans (body)
+       JetBrains Mono    — clean monospace (labels, code, tags) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
-    /* NAV */
-    nav{position:fixed;inset:0 0 auto;height:64px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;z-index:200;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
-    nav.solid{background:rgba(247,243,237,.96);backdrop-filter:blur(16px);border-color:rgba(196,185,172,.25)}
-    .nav-mark{font-family:var(--serif);font-size:1.1rem;font-weight:700;letter-spacing:.01em;color:var(--ink)}
-    .nav-mark span{color:var(--amber)}
-    .nav-links{display:flex;gap:32px;list-style:none}
-    .nav-links a{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ash);transition:color .2s;position:relative}
-    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;height:1px;width:0;background:var(--amber);transition:width .3s var(--ease)}
-    .nav-links a:hover{color:var(--amber)}
-    .nav-links a:hover::after{width:100%}
-    .nav-cta{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 22px;border:1.5px solid var(--ink);color:var(--ink);border-radius:2px;transition:all .25s}
-    .nav-cta:hover{background:var(--ink);color:var(--paper)}
-    .burger{display:none;flex-direction:column;gap:5px}
-    .burger span{width:22px;height:1.5px;background:var(--ink);display:block}
-    .mob{display:none;position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--parchment);z-index:199;padding:8px 0;flex-direction:column}
-    .mob.open{display:flex}
-    .mob a{padding:14px 52px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ash);border-bottom:1px solid var(--gold-ghost)}
+  <!-- Font Awesome brands (GitHub, LinkedIn, WhatsApp, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    /* ========= HERO ========= */
-    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 480px;background:var(--ink);position:relative;overflow:hidden}
-
-    /* left */
-    .h-left{display:flex;flex-direction:column;justify-content:flex-end;padding:72px 60px 80px;position:relative;z-index:5}
-    .h-status{display:inline-flex;align-items:center;gap:9px;margin-bottom:36px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-    .sdot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:pulse 2.4s ease infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
-    .h-name{font-family:var(--serif);font-size:clamp(50px,7vw,96px);font-weight:700;line-height:.92;letter-spacing:-.025em;color:var(--white);margin-bottom:24px}
-    .h-name em{font-style:italic;color:var(--gold);display:block}
-    .h-titles{display:flex;flex-direction:column;gap:7px;margin-bottom:44px}
-    .h-row{display:flex;align-items:baseline;gap:14px}
-    .h-num{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);min-width:18px}
-    .h-txt{font-size:clamp(.82rem,1.1vw,1rem);color:var(--fog);font-weight:400}
-    .h-txt strong{color:var(--parchment);font-weight:600}
-    .h-actions{display:flex;gap:14px;flex-wrap:wrap}
-    .h-btn1{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;background:var(--amber);color:var(--ink);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .25s var(--ease)}
-    .h-btn1:hover{background:var(--gold);transform:translateY(-2px)}
-    .h-btn2{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:1.5px solid rgba(255,255,255,.18);color:var(--fog);font-size:.73rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .25s}
-    .h-btn2:hover{border-color:var(--amber);color:var(--amber)}
-
-    /* quote — floats right of name column, no box */
-    .h-quote{position:absolute;top:50%;right:24px;transform:translateY(-55%);width:200px;z-index:6;pointer-events:none}
-    .h-quote-bar{width:1px;height:44px;background:var(--amber);margin-bottom:14px;opacity:.55}
-    .h-quote-text{font-family:var(--serif);font-size:1rem;font-style:italic;font-weight:300;line-height:1.65;color:var(--fog)}
-    .h-quote-text em{color:var(--gold);font-style:normal}
-
-    /* right / photo */
-    .h-right{position:relative;overflow:hidden}
-    .h-photo{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:grayscale(15%) contrast(1.07)}
-    .h-fallback{width:100%;height:100%;background:var(--ink-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
-    .h-fallback-ring{width:130px;height:130px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
-    .h-fallback-ring svg{opacity:.2}
-    .h-fallback-txt{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ash);text-align:center;line-height:1.8}
-    .h-photo-fade{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,var(--ink) 0%,transparent 100%)}
-    .h-grain{position:absolute;inset:0;pointer-events:none;opacity:.035;z-index:4;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
-    .h-vert{position:absolute;left:18px;top:50%;transform:translateY(-50%) rotate(-90deg);font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);white-space:nowrap;z-index:10}
-    .h-scroll{position:absolute;bottom:32px;left:60px;display:flex;align-items:center;gap:12px;z-index:10;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
-    .h-sbar{width:44px;height:1px;background:var(--ash);overflow:hidden;position:relative}
-    .h-sbar::after{content:'';position:absolute;inset:0;background:var(--amber);animation:scan 2s ease infinite}
-    @keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-
-    /* ========= SECTIONS ========= */
-    section{padding:96px 60px}
-    .s-label{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
-    .s-line{width:28px;height:1px;background:var(--amber)}
-    .s-title{font-family:var(--serif);font-size:clamp(34px,5vw,62px);font-weight:700;line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
-    .s-title em{font-style:italic;color:var(--mahogany)}
-    .s-sub{font-size:.93rem;color:var(--ash);max-width:540px;line-height:1.85;margin-bottom:56px}
-    .div{height:1px;background:linear-gradient(90deg,transparent,var(--parchment) 25%,var(--gold-pale) 50%,var(--parchment) 75%,transparent)}
-
-    /* ABOUT */
-    #about{background:var(--white)}
-    .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .ab-pull{font-family:var(--serif);font-size:clamp(21px,2.4vw,30px);font-weight:600;font-style:italic;line-height:1.5;color:var(--ink);padding-left:22px;border-left:2.5px solid var(--amber);margin-bottom:28px}
-    .ab-p{font-size:.9rem;color:var(--ash);line-height:1.9;margin-bottom:16px}
-    .ab-p strong{color:var(--ink-3);font-weight:600}
-    .ab-p a{color:var(--mahogany);border-bottom:1px solid var(--gold-pale)}
-
-    /* Aution dark block */
-    .aution{background:var(--ink);border-radius:4px;padding:30px 34px;margin-top:32px}
-    .a-eye{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-    .a-head{font-family:var(--serif);font-size:1.55rem;font-weight:700;color:var(--white);margin-bottom:5px}
-    .a-sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-    .a-desc{font-size:.83rem;color:var(--fog);line-height:1.8;margin-bottom:18px}
-    .a-pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-    .a-pillar{padding:12px 14px;border:1px solid rgba(255,255,255,.07);border-radius:2px}
-    .a-pillar-h{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
-    .a-pillar-t{font-size:.76rem;color:var(--fog);line-height:1.55}
-    .a-status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
-    .a-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s ease infinite}
-
-    /* Stomy block */
-    .stomy{margin-top:24px;padding:26px 30px;border:1px solid var(--parchment);border-radius:4px;background:var(--paper)}
-    .st-eye{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mahogany);margin-bottom:8px}
-    .st-head{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:8px}
-    .st-desc{font-size:.82rem;color:var(--ash);line-height:1.8}
-    .st-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-    .stag{font-family:var(--mono);font-size:.58rem;letter-spacing:.04em;padding:3px 9px;background:var(--gold-ghost);border:1px solid var(--gold-pale);color:var(--oak);border-radius:2px}
-
-    /* ID cards right col */
-    .id-cards{display:flex;flex-direction:column;gap:14px}
-    .id-card{padding:18px 22px;border:1px solid var(--parchment);border-left:3px solid transparent;border-radius:2px;background:var(--paper);transition:all .3s var(--ease)}
-    .id-card:hover{border-left-color:var(--amber);transform:translateX(5px);box-shadow:0 8px 28px rgba(10,9,8,.04)}
-    .id-role{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
-    .id-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.25}
-    .id-desc{font-size:.78rem;color:var(--ash);line-height:1.65}
-
-    /* TIMELINE */
-    #timeline{background:var(--paper)}
-    .tl{max-width:740px;position:relative;padding-left:2px}
-    .tl-spine{position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold-pale),var(--amber) 40%,var(--gold-pale))}
-    .tl-item{display:grid;grid-template-columns:52px 1fr;margin-bottom:50px}
-    .tl-l{display:flex;flex-direction:column;align-items:center;padding-top:4px}
-    .tl-dot{width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--amber);z-index:1;flex-shrink:0;margin-left:-4px;transition:all .3s}
-    .tl-item:hover .tl-dot{background:var(--amber);transform:scale(1.4)}
-    .tl-yr{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--amber);writing-mode:vertical-rl;transform:rotate(180deg);margin-top:12px}
-    .tl-b{padding-left:18px}
-    .tl-cat{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
-    .tl-name{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:4px}
-    .tl-place{font-size:.76rem;color:var(--dust);font-style:italic;margin-bottom:9px}
-    .tl-text{font-size:.83rem;color:var(--ash);line-height:1.8}
-    .tl-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
-    .tc{font-family:var(--mono);font-size:.56rem;letter-spacing:.04em;padding:3px 8px;border:1px solid var(--parchment);color:var(--dust);border-radius:2px}
-
-    /* SKILLS */
-    #skills{background:var(--white)}
-    .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
-    .sk-card{border:1px solid var(--parchment);border-radius:4px;background:var(--paper);overflow:hidden;transition:all .3s var(--ease)}
-    .sk-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 14px 44px rgba(107,61,30,.07)}
-    .sk-head{padding:18px 20px 14px;border-bottom:1px solid var(--gold-ghost);display:flex;align-items:flex-start;gap:13px}
-    .sk-ico{width:34px;height:34px;border-radius:6px;background:var(--gold-ghost);border:1px solid var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;color:var(--oak)}
-    .sk-name{font-family:var(--serif);font-size:.98rem;font-weight:700;color:var(--ink);margin-bottom:2px}
-    .sk-lvl{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
-    .sk-body{padding:13px 20px}
-    .sk-ev{font-size:.78rem;color:var(--ash);line-height:1.75;margin-bottom:11px}
-    .sk-ev strong{color:var(--ink-3);font-weight:600}
-    .sk-br{display:flex;justify-content:space-between;margin-bottom:5px}
-    .sk-br span{font-family:var(--mono);font-size:.58rem;color:var(--dust)}
-    .sk-trk{height:2px;background:var(--gold-ghost);border-radius:1px}
-    .sk-fill{height:100%;width:0;border-radius:1px;background:linear-gradient(90deg,var(--oak),var(--amber));transition:width 1.4s var(--ease)}
-    .sk-card.in .sk-fill{width:var(--w)}
-
-    /* PROJECTS */
-    #projects{background:var(--paper)}
-    .pj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:22px}
-    .pj-card{border:1px solid var(--parchment);border-radius:4px;background:var(--white);display:flex;flex-direction:column;overflow:hidden;transition:all .3s var(--ease)}
-    .pj-card:hover{border-color:var(--amber);transform:translateY(-5px);box-shadow:0 18px 56px rgba(107,61,30,.08)}
-    .pj-thumb{height:155px;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .pj-pat{position:absolute;inset:0;opacity:.1;background-image:repeating-linear-gradient(0deg,var(--amber) 0,var(--amber) 1px,transparent 0,transparent 38px),repeating-linear-gradient(90deg,var(--amber) 0,var(--amber) 1px,transparent 0,transparent 38px)}
-    .pj-num{font-family:var(--serif);font-size:70px;font-weight:700;color:rgba(255,255,255,.06);position:relative;z-index:1;line-height:1;letter-spacing:-.04em}
-    .pj-badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding:4px 9px;border:1px solid rgba(199,138,68,.3);border-radius:2px;background:rgba(199,138,68,.1)}
-    .pj-body{padding:20px;flex:1;display:flex;flex-direction:column}
-    .pj-type{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:7px}
-    .pj-name{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:9px;line-height:1.25}
-    .pj-desc{font-size:.8rem;color:var(--ash);line-height:1.75;flex:1;margin-bottom:14px}
-    .pj-stack{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-    .pt{font-family:var(--mono);font-size:.56rem;letter-spacing:.04em;padding:3px 8px;background:var(--paper);border:1px solid var(--parchment);color:var(--dust);border-radius:2px}
-    .pj-links{display:flex;gap:9px}
-    .pl{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:8px 16px;border:1.5px solid var(--ink);color:var(--ink);border-radius:2px;transition:all .25s var(--ease)}
-    .pl:hover{background:var(--ink);color:var(--paper)}
-    .pl.f{background:var(--ink);color:var(--paper)}
-    .pl.f:hover{background:var(--oak);border-color:var(--oak)}
-
-    /* PHOTOGRAPHY dark */
-    #photography{background:var(--ink-2);padding:96px 60px}
-    #photography .s-label{color:var(--gold)}
-    #photography .s-line{background:var(--gold)}
-    #photography .s-title{color:var(--white)}
-    #photography .s-title em{color:var(--gold)}
-    #photography .s-sub{color:var(--fog)}
-    .ph-manifesto{max-width:600px;margin-bottom:44px;font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.38rem);font-style:italic;font-weight:300;color:var(--fog);line-height:1.75}
-    .ph-manifesto strong{color:var(--gold-pale);font-weight:600;font-style:normal}
-    .ph-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:230px 230px;gap:9px;margin-bottom:36px}
-    .ph-cell{position:relative;overflow:hidden;background:var(--ink-3);border-radius:2px;display:flex;align-items:center;justify-content:center;transition:all .4s var(--ease)}
-    .ph-cell:first-child{grid-row:span 2}
-    .ph-cell img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.06);transition:transform .6s var(--ease)}
-    .ph-cell:hover img{transform:scale(1.06)}
-    .ph-fb{display:flex;flex-direction:column;align-items:center;gap:9px;opacity:.22}
-    .ph-fb svg{width:26px;height:26px}
-    .ph-fb span{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog)}
-    .ph-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.75) 0%,transparent 60%);opacity:0;transition:opacity .3s}
-    .ph-cell:hover .ph-ov{opacity:1}
-    .ph-lbl{position:absolute;bottom:11px;left:13px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .3s}
-    .ph-cell:hover .ph-lbl{opacity:1}
-    .ph-cta{display:flex;align-items:center;justify-content:space-between;padding:26px 34px;border:1px solid rgba(255,255,255,.06);border-radius:4px;background:rgba(255,255,255,.025);flex-wrap:wrap;gap:18px}
-    .ph-cta-e{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
-    .ph-cta-h{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--white)}
-    .ph-cta-s{font-size:.8rem;color:var(--fog);margin-top:3px}
-    .ph-cta-btn{padding:11px 24px;border:1.5px solid var(--amber);color:var(--amber);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:all .25s;white-space:nowrap}
-    .ph-cta-btn:hover{background:var(--amber);color:var(--ink)}
-
-    /* RESUME */
-    #resume{background:var(--white)}
-    .rs-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-    .rs-lbl{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--parchment)}
-    .soft{display:flex;gap:13px;margin-bottom:16px;padding:13px 15px;border:1px solid transparent;border-radius:2px;transition:all .25s}
-    .soft:hover{border-color:var(--parchment);background:var(--paper)}
-    .soft-i{font-size:.95rem;width:26px;flex-shrink:0;color:var(--amber)}
-    .soft-n{font-size:.86rem;font-weight:600;color:var(--ink);margin-bottom:3px}
-    .soft-d{font-size:.76rem;color:var(--ash);line-height:1.6}
-    .cv-dl{display:flex;align-items:center;gap:16px;padding:22px 26px;border:1.5px solid var(--ink);border-radius:4px;background:var(--paper);margin-top:24px;transition:all .25s var(--ease)}
-    .cv-dl:hover{background:var(--ink);color:var(--paper)}
-    .cv-dl:hover .cv-t{color:var(--parchment)}
-    .cv-dl:hover .cv-s{color:var(--fog)}
-    .cv-i{font-size:1.4rem}
-    .cv-t{font-weight:600;color:var(--ink);font-size:.88rem}
-    .cv-s{font-size:.72rem;color:var(--dust)}
-    .cv-a{margin-left:auto;font-size:1.05rem}
-    .ot{margin-top:32px}
-    .ot-h{font-family:var(--serif);font-size:.98rem;font-weight:700;color:var(--ink);margin-bottom:12px}
-    .ot-row{display:flex;align-items:center;gap:11px;padding:11px 14px;border:1px solid var(--parchment);border-radius:2px;background:var(--paper);margin-bottom:8px;font-size:.8rem;color:var(--ink-3);transition:border-color .2s}
-    .ot-row:hover{border-color:var(--amber)}
-    .ot-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
-
-    /* CONTACT dark */
-    #contact{background:var(--ink);padding:96px 60px}
-    #contact .s-label{color:var(--gold)}
-    #contact .s-line{background:var(--gold)}
-    #contact .s-title{color:var(--white)}
-    #contact .s-title em{color:var(--gold)}
-    .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:76px}
-    .ct-copy{font-size:.88rem;color:var(--fog);line-height:1.9;margin-bottom:28px}
-    .ct-links{display:flex;flex-direction:column;gap:11px}
-    .ct-link{display:flex;align-items:center;gap:13px;padding:13px 16px;border:1px solid rgba(255,255,255,.07);border-radius:2px;background:rgba(255,255,255,.025);color:var(--fog);transition:all .25s}
-    .ct-link:hover{border-color:var(--amber);background:rgba(199,138,68,.07);color:var(--parchment)}
-    .ct-ico{width:20px;text-align:center;font-size:.9rem}
-    .ct-n{font-size:.78rem;font-weight:600}
-    .ct-v{font-family:var(--mono);font-size:.62rem;color:var(--dust)}
-    .ct-form{display:flex;flex-direction:column;gap:13px}
-    .ct-grp{display:flex;flex-direction:column;gap:6px}
-    .ct-lab{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-    .ct-inp,.ct-area{padding:12px 15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:2px;font-family:var(--sans);font-size:.86rem;color:var(--parchment);outline:none;transition:border-color .25s}
-    .ct-inp:focus,.ct-area:focus{border-color:var(--amber);background:rgba(199,138,68,.06)}
-    .ct-inp::placeholder,.ct-area::placeholder{color:var(--ash)}
-    .ct-area{min-height:108px;resize:vertical}
-    .ct-sub{align-self:flex-start;padding:12px 28px;background:var(--amber);color:var(--ink);font-family:var(--sans);font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;transition:all .25s var(--ease);display:inline-flex;align-items:center;gap:8px}
-    .ct-sub:hover{background:var(--gold);transform:translateY(-2px)}
-    .ct-msg{font-size:.78rem;color:var(--gold);padding:9px 0;display:none}
-
-    /* FOOTER */
-    footer{background:var(--ink-2);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;gap:14px}
-    .ft-n{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--white)}
-    .ft-s{font-size:.7rem;color:var(--dust);margin-top:2px}
-    .ft-r{text-align:right}
-    .ft-repo{font-family:var(--mono);font-size:.62rem;color:var(--ash);margin-bottom:3px}
-    .ft-yr{font-family:var(--mono);font-size:.6rem;color:var(--ash)}
-
-    /* REVEAL */
-    .reveal,.pj-card,.sk-card{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-    .reveal.in,.pj-card.in,.sk-card.in{opacity:1;transform:none}
-
-    /* RESPONSIVE */
-    @media(max-width:1060px){
-      #hero{grid-template-columns:1fr;min-height:100vh}
-      .h-right{position:absolute;inset:0;opacity:.16;z-index:0}
-      .h-left{position:relative;z-index:5;padding:120px 36px 80px;justify-content:flex-end}
-      .h-quote{display:none}
-      .ab-grid,.ct-grid,.rs-grid{grid-template-columns:1fr;gap:40px}
-      section{padding:80px 36px}
-      #photography,#contact{padding:80px 36px}
-      footer{padding:32px 36px}
-    }
-    @media(max-width:760px){
-      .nav-links,.nav-cta{display:none}
-      .burger{display:flex}
-      .ph-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-      .ph-cell:first-child{grid-row:span 1}
-      .pj-grid,.sk-grid{grid-template-columns:1fr}
-      .a-pillars{grid-template-columns:1fr}
-    }
-    @media(max-width:480px){
-      .h-name{font-size:46px}
-      .ph-grid{grid-template-columns:1fr}
-      footer{flex-direction:column}
-      .ft-r{text-align:left}
-    }
-  </style>
+  <!-- Lucide Icons (used elsewhere) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-o"></div>
+  <!-- ═══════════════════════════════════════
+       NAVIGATION BAR
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <a class="nav-brand" onclick="navigateTo('home')" href="#home">
+  
+      <span class="brand-name">Advocate</span>
+    </a>
 
-<!-- Mobile nav -->
-<div class="mob" id="mob">
-  <a href="#about" onclick="cm()">About</a>
-  <a href="#timeline" onclick="cm()">Story</a>
-  <a href="#skills" onclick="cm()">Skills</a>
-  <a href="#projects" onclick="cm()">Projects</a>
-  <a href="#photography" onclick="cm()">Photography</a>
-  <a href="#resume" onclick="cm()">Resume</a>
-  <a href="#contact" onclick="cm()">Contact</a>
-</div>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     class="nav-link active" data-page="home">Home</a></li>
+        <li><a href="#about"    class="nav-link"        data-page="about">About</a></li>
+        <li><a href="#skills"   class="nav-link"        data-page="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link"        data-page="projects">Projects</a></li>
+        <li><a href="#beyond"   class="nav-link"        data-page="beyond">Beyond</a></li>
+        <li><a href="#connect"  class="nav-link"        data-page="connect">Connect</a></li>
+      </ul>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-mark">A<span>.</span>K</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#timeline">Story</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#photography">Photography</a></li>
-    <li><a href="#resume">Resume</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Let's Talk</a>
-  <button class="burger" onclick="tm()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+      <!-- Dark / Light theme toggle -->
+      <button id="themeToggle" title="Toggle theme" aria-label="Toggle dark/light mode">
+        🌙
+      </button>
 
-<!-- ===== HERO ===== -->
-<section id="hero">
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-  <div class="h-left">
-    <div class="h-status reveal">
-      <span class="sdot"></span>
-      Open to collaboration &amp; opportunities · Cape Town
+
+  <!-- ═══════════════════════════════════════
+       HOME PAGE
+  ═══════════════════════════════════════ -->
+  <section id="home" class="page page-home active">
+
+    <!-- Blurred B&W background -->
+    <div class="home-bg">
+      <div class="home-bg-img">
+    <! --  Edited in css to set background-image: url('Asserts/GradMe.jpeg') and adjust filters for better clarity while maintaining the blurred effect -->
+      </div>
+      <div class="home-bg-overlay"></div>
     </div>
 
-    <h1 class="h-name reveal">
-      Advocate<br/>
-      <em>Karabo Tladi</em>
-    </h1>
+    <div class="home-grid">
 
-    <div class="h-titles reveal">
-      <div class="h-row">
-        <span class="h-num">01</span>
-        <span class="h-txt"><strong>Aspiring AI Engineer</strong></span>
+      <!-- LEFT — Avatar + social icons -->
+      <div class="home-avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-circle">
+            <img
+              src="Asserts/Profile.JPG"
+              alt="Advocate Karabo"
+              class="avatar-img"
+            />
+          </div>
+        </div>
+
+        
+        <div class="avatar-socials">
+          <a href="https://github.com/Advoo" target="_blank" class="social-icon si-github" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/advocate-karabo-7550122b3" target="_blank" class="social-icon si-linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://wa.me/0656275687" target="_blank" class="social-icon si-whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:advocatekarabo09@gmail.com" class="social-icon si-email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="Asserts/CV.pdf" download class="social-icon si-cv" title="Download CV">
+            <i class="fas fa-file-arrow-down"></i>
+          </a>
+        </div>
       </div>
-      <div class="h-row">
-        <span class="h-num">02</span>
-        <span class="h-txt">Computer Science Student — <strong>University of the Western Cape</strong></span>
+
+      <!-- RIGHT — Bio glass card sitting on blurred bg -->
+      <div class="home-bio">
+        <p class="home-greeting">Hi There <span class="wave">👋</span></p>
+
+        <h1 class="home-name">I'm <span class="name-highlight">Advocate</span></h1>
+
+        <div class="home-roles">
+          <span class="role-tag">Full Stack Dev</span>
+          <span class="role-divider">·</span>
+          <span class="role-tag">Aspiring AI Engineer</span>
+          <span class="role-divider">·</span>
+          <span class="role-tag">Photographer</span>
+        </div>
+
+        <p class="home-tagline">
+          Second-year Computer Science student at UWC , building real projects,
+          contributing to community, and learning in public.
+        </p>
+
+        <blockquote class="home-quote">
+          "The best way to predict the future is to write backwards."
+          <cite>— Alan Kay</cite>
+        </blockquote>
+
+        <div class="home-cta">
+          <a href="#projects" class="btn btn-primary" onclick="navigateTo('projects')">See My Work</a>
+          <a href="#connect"  class="btn btn-outline" onclick="navigateTo('connect')">Get In Touch</a>
+        </div>
       </div>
-      <div class="h-row">
-        <span class="h-num">03</span>
-        <span class="h-txt">Director — <strong>Aution &amp; Aution Mobility</strong>, Cape Town</span>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section id="about" class="page page-about">
+    <div class="page-header">
+      <p class="section-label"> section A</p>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-sub">The story so far — still unfolding.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Currently pursuing a degree in Computer Science at <strong>University of the Western Cape (UWC)</strong>. I am focused on building structured, scalable systems that translate ideas into practical, usable products. My approach is grounded in system thinking—understanding how components interact, optimizing for efficiency, and designing with long-term evolution in mind.
+          
+Beyond technical implementation, I have a strong inclination toward design. I am interested in creating solutions that are not only functional but also refined, intuitive, and personally meaningful. This perspective led to the development of Novar, a concept shaped around delivering systems that feel deliberate, cohesive, and purpose-driven rather than merely operational.
+
+I work across the full lifecycle of software development—from conceptual modeling and architecture to implementation—while maintaining a clear emphasis on clarity, performance, and user experience. My goal is to contribute to environments where innovation is expected, systems are thoughtfully engineered, and products are built to endure.
+
+I am particularly motivated by opportunities that combine technical depth with creative direction, where engineering decisions directly influence how people interact with and experience technology.
+
+        </p>
+        <p>
+          My technical roots run deep in Artificial Intelligencen , but my interests are broad. I am fascinated by how AI can be integrated into products to enhance human capabilities and solve <strong>real-personal problems <strong>. I am actively exploring machine learning frameworks and techniques, with a focus on how they can be applied in practical, user-centric ways.
+        </p>
+        <p>
+          Beyond the terminal, I carry a camera. Through
+          <strong>Stomy Photography</strong>, I've walked into rooms with
+          entrepreneurs, founders, and creatives — documenting their
+          workshops and events. Every lens shift taught me something a
+          textbook couldn't.
+        </p>
+        <p>
+          I believe technology and community are not separate. That's why I
+          actively contribute to <strong>GKSS at UWC</strong> and serve as a Secretary, helping to organise events and initiatives that connect students with opportunities. I'm also a proud recipient of the <strong>Moshal Scholarship</strong>, which has been instrumental in my academic journey. As part of that, I took on the role of              
+          <strong>Moshal Outreach Champion</strong> — because the next
+          developer who changes things might just need someone who showed
+          up first.
+        </p>
       </div>
-      <div class="h-row">
-        <span class="h-num">04</span>
-        <span class="h-txt">Co-associate — <strong>Stomy Photography</strong></span>
+
+      <div class="about-visual">
+
+        <!-- Blurred portrait banner -->
+        <div class="vis-banner">
+          <div class="vis-banner-bg"></div>
+          <div class="vis-banner-content">
+            <p class="vis-banner-tag">// in motion</p>
+            <p class="vis-banner-sub">Code &middot; Lead &middot; Inspire</p>
+          </div>
+        </div>
+
+        <!-- Staggered identity circles -->
+        <div class="vis-circles">
+
+          <div class="vis-circle-item vis-circle-item--left">
+            <div class="vis-circle">
+              
+              <img src="Asserts/CS.jpeg" alt="Programming & building" />
+            </div>
+            <span class="vis-circle-label">Code &amp; Build</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--right">
+            <div class="vis-circle vis-circle--lg">
+              <img src="Asserts/LD.jpeg" alt="Leadership & community" />
+            </div>
+            <span class="vis-circle-label">Lead &amp; Serve</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--mid">
+            <div class="vis-circle">
+             
+              <img src="Asserts/PSHT.jpeg" alt="Photography & storytelling" />
+            </div>
+            <span class="vis-circle-label">Capture &amp; Story</span>
+          </div>
+
+          <div class="vis-circle-item vis-circle-item--right">
+            <div class="vis-circle vis-circle--lg">
+              <img src="Asserts/Moshal.jpeg" alt="Opportunities & Network" />
+            </div>
+            <span class="vis-circle-label">Opportunities &amp; Network</span>
+          </div>
+
+        </div>
       </div>
-      <div class="h-row">
-        <span class="h-num">05</span>
-        <span class="h-txt">Full Stack Builder — <strong>Future Interns FS Track</strong></span>
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SKILLS & EXPERIENCE
+  ═══════════════════════════════════════ -->
+  <section id="skills" class="page page-skills">
+    <div class="page-header">
+      <p class="section-label"> 02</p>
+      <h2 class="section-title">Skills & Experience</h2>
+      <p class="section-sub">Where tools met real problems.</p>
+    </div>
+
+    <div class="skills-toggle">
+      <button class="toggle-btn active" id="btnTech"     onclick="switchSkills('tech')">Technical</button>
+      <button class="toggle-btn"        id="btnPersonal" onclick="switchSkills('personal')">Personal</button>
+    </div>
+
+    <!-- TECHNICAL -->
+    <div id="skillsTech" class="skills-panel active">
+      <div class="skills-cards">
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="terminal"></i></div>
+          <h4>Linux & CLI</h4>
+          <p>Daily driver. Used across project environments, scripting, file
+          management, and server configuration. </p>
+          <div class="skill-where">
+            <span class="badge">Portfolio Server</span>
+            <span class="badge">Dev Environment</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="code-2"></i></div>
+          <h4>Python</h4>
+          <p>Used for scripting, automation, and data manipulation in academic
+          projects. Clean syntax that rewards structured thinking.</p>
+          <div class="skill-where">
+            <span class="badge">Academic Projects</span>
+            <span class="badge">Automation Scripts</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="coffee"></i></div>
+          <h4>Java</h4>
+          <p>Core language in CS curriculum. Applied in OOP principles, data
+          structures, and algorithm coursework.</p>
+          <div class="skill-where">
+            <span class="badge">University Coursework</span>
+            <span class="badge">OOP Design</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="globe"></i></div>
+          <h4>HTML / JavaScript</h4>
+          <p>Front-end foundation. Built and deployed real websites — this portfolio
+          and the Joe Designs Carpentry page — from scratch, with no templates.</p>
+          <div class="skill-where">
+            <span class="badge">This Portfolio</span>
+            <span class="badge">Joe Designs Web</span>
+            <span class="badge">GitHub Pages</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="git-branch"></i></div>
+          <h4>Git & GitHub</h4>
+          <p>Version control for all projects. Public repositories, commit
+          discipline, and collaborative workflows.</p>
+          <div class="skill-where">
+            <span class="badge">All Projects</span>
+            <span class="badge">Open Source</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="server"></i></div>
+          <h4>Node.js (Learning)</h4>
+          <p>Building backend API understanding. Applied in this portfolio's
+          contact/links server as a practical learning exercise.</p>
+          <div class="skill-where">
+            <span class="badge">Portfolio Backend</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="h-actions reveal">
-      <a href="#projects" class="h-btn1">See My Work ↓</a>
-      <a href="#contact" class="h-btn2">Collaborate →</a>
-    </div>
-  </div>
+    <!-- PERSONAL -->
+    <div id="skillsPersonal" class="skills-panel">
+      <div class="skills-cards">
 
-  <!-- Quote floats beside text, no box -->
-  <div class="h-quote">
-    <div class="h-quote-bar"></div>
-    <p class="h-quote-text">
-      "I don't ask <em>how</em> to build it — I ask <em>why</em> no one has yet."
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="users"></i></div>
+          <h4>Leadership & Initiative</h4>
+          <p>Contributing actively to <strong>GKSS at UWC</strong>, I've learned
+          that leadership isn't a title — it's showing up consistently. From
+          organising community efforts to being a voice in student spaces,
+          initiative has become a habit.</p>
+          <div class="skill-where">
+            <span class="badge">GKSS UWC</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/GKSS.png" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/GKSS.png" alt="GKSS UWC Certificate" />
+              <span class="cert-item-label">GKSS UWC — Certificate of Participation</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="heart-handshake"></i></div>
+          <h4>Moshal Program</h4>
+          <p>As a <strong>Moshal Recipient</strong>, I am gaining more than academic support through mentorship, industry exposure, real-world experiences, and a community of ambitious, high-performing individuals</p>
+          <div class="skill-where">
+            <span class="badge">Moshal Scholarship</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/Moshal.jpeg" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/Moshal.jpeg" alt="Moshal Outreach Champion" />
+              <span class="cert-item-label">Moshal Scholarship — Outreach Champion</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="camera"></i></div>
+          <h4>Visual Storytelling</h4>
+          <p>Through <strong>Stomy Photography</strong>, I've documented events,
+          workshops, and entrepreneurial gatherings. Every shoot put me in the
+          room — watching how founders communicate, how spaces are designed, how to work with clients and deliver value, how
+          moments are framed. That visual literacy now gave me a closer relationships with clients, corparate in real-world scenarios , make profit and how to work under pressure.</p>
+          <div class="skill-where">
+            <span class="badge">Stomy Photography</span>
+            <span class="badge">Entrepreneur Events</span>
+            <span class="badge">Graduations</span>
+            <span class="badge">Corporate Events</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-icon"><i data-lucide="award"></i></div>
+          <h4>Volunteerism and Initiatives</h4>
+          <p>Contributed to technical operations at major events, including <strong>Presidential Gold Challenge</strong> the Presidential Golf Challenge, delivering under pressure to ensure seamless execution. Engaged in workshops and industry-focused events, gaining practical exposure and building connections within a network of driven, like-minded individuals</p>
+          <div class="skill-where">
+            <span class="badge">Presidential Gold Challenge</span>
+            <span class="badge">Geekulcha Student Society</span>
+            <span class="badge">StartUp Grind</span>
+            <span class="badge">Univerity of Western Cape</span>
+          </div>
+          <div class="cert-gallery cert-gallery--full">
+            <a href="certs/PGC.jpeg" class="cert-item cert-item--full" target="_blank">
+              <img src="certs/PGC.jpeg" alt="Presidential Gold Challenge Certificate" />
+              <span class="cert-item-label">Presidential Gold Challenge — Certificate</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════ -->
+  <section id="projects" class="page page-projects">
+    <div class="page-header">
+      <p class="section-label">Section C</p>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Built from scratch. Deployed in the real world.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-number">Portfolio</div>
+        <div class="project-meta">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+        <h3 class="project-title">Personal Portfolio Website</h3>
+        <p class="project-desc">
+          The site you're on right now. Built as Task 1 of the Future Interns
+          Full Stack programme — but treated as a real product. Multi-page
+          layout, dual theme, responsive design, and a Node.js backend.
+        </p>
+        <div class="project-links">
+          <!-- GitHub repo URL -->
+          <a href="https://github.com/Advoo/FUTURE_FS_01.git" class="project-link" target="_blank"><i data-lucide="github"></i> GitHub</a>
+          <a href="#" class="project-link" target="_blank"><i data-lucide="external-link"></i> Live</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-number">Business Website</div>
+        <div class="project-meta">
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+        <h3 class="project-title">Joe Designs — Carpentry Studio</h3>
+        <p class="project-desc">
+          A professional business webpage for Joe Designs, a local carpentry
+          studio. Built to showcase craftsmanship and convert visitors to
+          clients — warm material aesthetic, clean typography, contact section.
+          GitHub link coming once final version is deployed.
+        </p>
+        <div class="project-links">
+          <!-- REPLACE href with your GitHub repo URL when ready -->
+          <a href="#" class="project-link project-link--pending" target="_blank">
+            <i data-lucide="github"></i> GitHub
+          </a>
+          <a href="#" class="project-link project-link--pending" target="_blank">
+            <i data-lucide="external-link"></i> Live
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card project-card--featured">
+        <div class="project-number">Platform</div>
+        <div class="project-badge">Current</div>
+        <div class="project-meta"><span class="project-tag">TBD</span></div>
+        <h3 class="project-title">Novar ✦</h3>
+        <p class="project-desc">
+          A Personal AI OS that streamline daily tasks and enhance productivity by being proactive rather than reactive.
+        </p>
+        <div class="project-links">
+          <a href="#connect" class="project-link" onclick="navigateTo('connect')">
+            <i data-lucide="zap"></i> Follow the build →
+          </a>
+        </div>
+      </article>
+
+    </div>
+    <div class="grain"></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       BEYOND ACADEMICS — Stomy Photography
+  ═══════════════════════════════════════ -->
+  <section id="beyond" class="page page-beyond">
+    <div class="page-header">
+      <p class="section-label">Section D</p>
+      <h2 class="section-title">Beyond Professionalism</h2>
+      <p class="section-sub">Photographer and Content Creator.</p>
+    </div>
+
+    <p class="gallery-intro">
+      Photography gave me access to rooms I wouldn't otherwise enter. Entrepreneur
+      workshops, community events, pitch sessions — I showed up with a camera and
+      left with perspective. These are some of those moments. The people, the energy,
+      the work that happens outside lecture halls.
     </p>
-  </div>
 
-  <!-- PHOTO PANEL — replace fallback with your actual image -->
-  <div class="h-right">
-    <!--
-      TO ADD YOUR PHOTO:
-      Remove the h-fallback div below and uncomment this:
-      <img src="./assets/karabo.jpg" alt="Advocate Karabo Tladi" class="h-photo"/>
+    <div class="photo-grid">
 
-      Best results: clean portrait, neutral/dark background, min 800×1200px
-    -->
-    <div class="h-fallback">
-      <div class="h-fallback-ring">
-        <svg width="68" height="68" viewBox="0 0 68 68" fill="none">
-          <circle cx="34" cy="25" r="14" stroke="white" stroke-width="1.5"/>
-          <path d="M8 60c0-14.36 11.64-26 26-26s26 11.64 26 26" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+      <div class="photo-item">
+        <img src="Asserts/1-IMG_0078.jpg" alt="Event photography 1" />
       </div>
-      <div class="h-fallback-txt">
-        Add your portrait here<br/>
-        /assets/karabo.jpg
+
+      <div class="photo-item">
+        <img src="Asserts/2-IMG_7360.jpg" alt="Event photography 2" />
       </div>
+
+      <div class="photo-item">
+        <img src="Asserts/3-IMG_8365.jpg" alt="Event photography 3" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/4-IMG_6820.jpg" alt="Event photography 4" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/5-IMG_6042.jpg" alt="Event photography 5" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/6-image00005.jpg" alt="Event photography 6" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/7-image00022.jpg" alt="Event photography 7" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/8-IMG_1581.jpg" alt="Event photography 8" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/me.jpeg" alt="Photographer 1" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/1-IMG_2802.jpg" alt="Event photography 9" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/2-IMG_7383.jpg" alt="Event photography 10" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/3-IMG_8514.jpg" alt="Event photography 11" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/4-IMG_8374.jpg" alt="Event photography 12" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/5-IMG_6371.jpg" alt="Event photography 13" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/6-IMG_8628.jpg" alt="Event photography 14" />
+      </div>
+
+      <div class="photo-item">
+        <img src="Asserts/7-IMG_6820.jpg" alt="Event photography 15" />
+      </div>
+
     </div>
-    <div class="h-photo-fade"></div>
-  </div>
+    <div class="grain"></div>
+  </section>
 
-  <div class="h-grain"></div>
-  <div class="h-vert">Advocate Karabo Tladi · 2025 · UWC · Cape Town</div>
-  <div class="h-scroll"><div class="h-sbar"></div>Scroll</div>
 
-</section>
+  <!-- ═══════════════════════════════════════
+       CONNECT
+  ═══════════════════════════════════════ -->
+  <section id="connect" class="page page-connect">
+    <div class="page-header">
+      <p class="section-label">Section E</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Real conversations. Real opportunities.</p>
+    </div>
 
-<div class="div"></div>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="s-label reveal"><span class="s-line"></span>Who I am</div>
-  <div class="ab-grid">
-    <div>
-      <h2 class="s-title reveal">Not a coder.<br/>A <em>market observer</em>.</h2>
-      <blockquote class="ab-pull reveal">
-        "I look at what the market has left unanswered, ask why — then design the simplest, most astonishing response."
-      </blockquote>
-      <p class="ab-p reveal">
-        I'm <strong>Advocate Karabo Tladi</strong> — a Computer Science student at the 
-        <strong>University of the Western Cape</strong>, aspiring AI Engineer, and one of eight directors 
-        at <strong>Aution</strong>, Cape Town's privately-held intelligent mobility company. 
-        I operate at the intersection of systems, people, and market opportunity.
+    <!-- Novar Introduction -->
+    <div class="novar-block">
+      <div class="novar-label">Collarb with me</div>
+      <h3 class="novar-title">Novar <span class="novar-spark">✦</span></h3>
+      <p class="novar-desc">
+       <strong>Novar</strong> is a project where I’m building intelligent, user-centered systems that turn personal behavior into practical insights for better focus and performance. I’m open to collaborating if you’re interested in building something meaningful in this space.
       </p>
-      <p class="ab-p reveal">
-        My approach to technology isn't driven by passion for programming. It's driven by a question: 
-        <strong>why hasn't this been done yet?</strong> I look at the market, find the gap, 
-        and design an execution that feels inevitable in hindsight — 
-        simple, elegant, and built for the people it actually serves.
+      <p class="novar-cta-text">
+        If you're a developer, designer, entrepreneur, or someone who cares
+        about building things that matter — I want to hear from you.
       </p>
-      <p class="ab-p reveal">
-        Currently building toward an AI engineering practice where intelligence isn't a product 
-        you open — it's <strong>infrastructure that disappears into human experience</strong>, 
-        quietly enhancing every decision. If you're working at that edge, 
-        <a href="#contact">let's think together →</a>
-      </p>
+    </div>
 
-      <div class="aution reveal">
-        <div class="a-eye">// Director · One of eight · Private company</div>
-        <div class="a-head">Aution &amp; Aution Mobility</div>
-        <div class="a-sub">Cape Town · Human Logistics · B2B · 8 Directors</div>
-        <div class="a-desc">
-          Aution is a Cape Town mobility company — intelligent human logistics operating 
-          at the B2B level. Think Uber, but purpose-built for institutional clients, 
-          strategic contracts, and the kind of operational precision consumer apps can't deliver. 
-          Eight directors, one profit-aligned strategy, full ownership of execution.
+    <!-- Message Box -->
+    <div class="message-box">
+      <div class="message-box__header">
+        <span class="message-box__label">start a conversation</span>
+        <h3 class="message-box__title">Send me a message</h3>
+        <p class="message-box__sub">Straight to WhatsApp &mdash; Get back to you within 24 hours.</p>
+      </div>
+      <div class="message-box__prompts">
+        <button class="msg-chip" data-msg="Hi Advocate, I'd love to collaborate on Novar with you.">Collaborate on Novar</button>
+        <button class="msg-chip" data-msg="Hi, I saw your portfolio and wanted to reach out.">Just connecting</button>
+        <button class="msg-chip" data-msg="Hi Advocate, I have an opportunity I think you'd be great for.">Talk opportunities</button>
+        <button class="msg-chip" data-msg="Hi, I'm a developer interested in contributing to one of your projects.">Developer interest</button>
+      </div>
+      <div class="message-box__compose">
+        <textarea class="msg-textarea" id="msgTextarea" placeholder="Write your message here…" rows="7"></textarea>
+        <button class="msg-send" id="msgSendBtn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+          <i data-lucide="arrow-up-right" class="msg-send-arrow"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Connect Links -->
+    <div class="connect-grid">
+
+      <a href="https://wa.me/0656275687" target="_blank" class="connect-card connect-card--whatsapp">
+        <div class="connect-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">WhatsApp</span>
+          <span class="connect-hint">Quickest way to reach me</span>
         </div>
-        <div class="a-pillars">
-          <div class="a-pillar">
-            <div class="a-pillar-h">Strategy</div>
-            <div class="a-pillar-t">Profit-first B2B positioning. Every decision traces back to sustainable business architecture — not growth theatre.</div>
-          </div>
-          <div class="a-pillar">
-            <div class="a-pillar-h">Execution</div>
-            <div class="a-pillar-t">Eight directors, distributed accountability, one direction. We run like a real company because we are one.</div>
-          </div>
-          <div class="a-pillar">
-            <div class="a-pillar-h">Market</div>
-            <div class="a-pillar-t">Cape Town mobility has structural gaps no platform has addressed at the institutional level. Aution owns that space.</div>
-          </div>
-          <div class="a-pillar">
-            <div class="a-pillar-h">Model</div>
-            <div class="a-pillar-t">B2B focus. Long-term contracts. Predictable margin. Not the volatility of consumer-only ride platforms.</div>
-          </div>
-        </div>
-        <div class="a-status"><span class="a-dot"></span>Private · Active · Cape Town · Building</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="id-cards reveal">
-        <div class="id-card">
-          <div class="id-role">// Aspiring AI Engineer · UWC</div>
-          <div class="id-title">Building Intelligent Systems</div>
-          <div class="id-desc">Pursuing AI Engineering through coursework and applied projects. Focused on systems where intelligence is embedded — not bolted on. The Personal AI OS prototype is where this vision lives right now.</div>
-        </div>
-        <div class="id-card">
-          <div class="id-role">// Director · Aution Mobility</div>
-          <div class="id-title">Company Strategist &amp; Builder</div>
-          <div class="id-desc">One of eight directors at Aution. Boardroom accountability on strategy, B2B client positioning, and execution alignment. Building a real company — not a startup pitch deck — from the ground up in Cape Town.</div>
-        </div>
-        <div class="id-card">
-          <div class="id-role">// Co-associate · Stomy Photography</div>
-          <div class="id-title">Client Experience &amp; Visual Delivery</div>
-          <div class="id-desc">We deliver visions clients didn't know they had. You see it — you feel it. People management, client expectations, commercial delivery, and the craft of turning a brief into media that stops people mid-scroll.</div>
-        </div>
-        <div class="id-card">
-          <div class="id-role">// Full Stack Builder · FS Track</div>
-          <div class="id-title">From Architecture to Shipped</div>
-          <div class="id-desc">React, Node.js, MongoDB, Express, APIs — every skill earned through real delivery. The Future Interns track is where academic knowledge becomes professional-grade work: documented, hosted on GitHub, verifiable.</div>
-        </div>
-      </div>
-
-      <div class="stomy reveal">
-        <div class="st-eye">// Co-associate · Side business · UWC · Cape Town</div>
-        <div class="st-head">Stomy Photography</div>
-        <div class="st-desc">
-          We don't just take photographs — we deliver the vision customers never thought could become media. 
-          They arrive with a feeling. We hand them back something they didn't know was possible. 
-          See it. Feel it. That's the brief and the outcome, every time. 
-          Stomy Photography is a real business: client management, delivery standards, brand trust built over time.
-        </div>
-        <div class="st-tags">
-          <span class="stag">Client Management</span>
-          <span class="stag">People Management</span>
-          <span class="stag">Visual Storytelling</span>
-          <span class="stag">Media Production</span>
-          <span class="stag">Commercial Delivery</span>
-          <span class="stag">UWC</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ===== TIMELINE ===== -->
-<section id="timeline">
-  <div class="s-label reveal"><span class="s-line"></span>The journey</div>
-  <h2 class="s-title reveal">My <em>Story</em> So Far</h2>
-  <p class="s-sub reveal">Every chapter was building capacity for the next one. This is the sequence.</p>
-
-  <div class="tl reveal">
-    <div class="tl-spine"></div>
-
-    <div class="tl-item">
-      <div class="tl-l"><div class="tl-dot"></div><div class="tl-yr">2022</div></div>
-      <div class="tl-b">
-        <div class="tl-cat">// Education · Foundation</div>
-        <div class="tl-name">BSc Computer Science &amp; Information Systems</div>
-        <div class="tl-place">University of the Western Cape — Cape Town, South Africa</div>
-        <div class="tl-text">Began formal study — algorithms, data structures, software systems, databases. The curriculum gave me technical vocabulary. What it couldn't give me was the question of what to build with it. That came from watching the market and asking the questions no lecture prompted.</div>
-        <div class="tl-chips"><span class="tc">Algorithms</span><span class="tc">Data Structures</span><span class="tc">Java</span><span class="tc">Databases</span><span class="tc">Systems Design</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-l"><div class="tl-dot"></div><div class="tl-yr">2023</div></div>
-      <div class="tl-b">
-        <div class="tl-cat">// Photography · Business · People</div>
-        <div class="tl-name">Co-associate — Stomy Photography</div>
-        <div class="tl-place">University of the Western Cape</div>
-        <div class="tl-text">Joined Stomy Photography as co-associate — a client-facing visual media business at UWC. Photography taught me that the real product is not the image, it's the feeling. Managing clients means understanding what they can't articulate, then delivering beyond what they imagined. First serious lesson in people management, client trust, and business-as-craft.</div>
-        <div class="tl-chips"><span class="tc">Photography</span><span class="tc">Client Management</span><span class="tc">People Management</span><span class="tc">Visual Media</span><span class="tc">Business Operations</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-l"><div class="tl-dot"></div><div class="tl-yr">2024</div></div>
-      <div class="tl-b">
-        <div class="tl-cat">// Venture · Directorship · Company Building</div>
-        <div class="tl-name">Director — Aution &amp; Aution Mobility</div>
-        <div class="tl-place">Private Company · Cape Town, South Africa</div>
-        <div class="tl-text">Became one of eight directors at Aution — a private human logistics and mobility company in Cape Town. This was not a student project. It was company formation: board alignment, profit modelling, B2B client strategy, and shared execution accountability. I own part of a real company's direction. That changes how every other problem looks.</div>
-        <div class="tl-chips"><span class="tc">Directorship</span><span class="tc">B2B Strategy</span><span class="tc">Mobility</span><span class="tc">Company Building</span><span class="tc">Profit Design</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-l"><div class="tl-dot"></div><div class="tl-yr">2025</div></div>
-      <div class="tl-b">
-        <div class="tl-cat">// Internship · Full Stack · Professional Practice</div>
-        <div class="tl-name">Future Interns — Full Stack Web Development (FS Track)</div>
-        <div class="tl-place">Remote · Professional Internship Programme</div>
-        <div class="tl-text">Enrolled in the Future Interns FS track — structured professional practice treating each task as a real client deliverable. Built this portfolio, a CRM system, and a live business website pitched to an actual business owner. Every project is documented, GitHub-hosted, and verifiable. Not a bootcamp — professional accountability from day one.</div>
-        <div class="tl-chips"><span class="tc">React</span><span class="tc">Node.js</span><span class="tc">Express</span><span class="tc">MongoDB</span><span class="tc">GitHub</span><span class="tc">Deployment</span></div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-l"><div class="tl-dot"></div><div class="tl-yr">Now</div></div>
-      <div class="tl-b">
-        <div class="tl-cat">// Building · Research · AI Engineering</div>
-        <div class="tl-name">Personal AI OS + Hackathon Circuit</div>
-        <div class="tl-place">UWC · Cape Town · Remote</div>
-        <div class="tl-text">Designing an ambient AI operating system — not an app, not a chatbot, but an architectural layer that learns human patterns and makes intelligence invisible infrastructure for daily life. Running the hackathon circuit in parallel to stress-test ideas under competitive, time-compressed conditions. The best ideas survive pressure.</div>
-        <div class="tl-chips"><span class="tc">AI Engineering</span><span class="tc">System Design</span><span class="tc">Hackathons</span><span class="tc">Research</span><span class="tc">Prototyping</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ===== SKILLS ===== -->
-<section id="skills">
-  <div class="s-label reveal"><span class="s-line"></span>What I bring</div>
-  <h2 class="s-title reveal">Skills with <em>Evidence</em></h2>
-  <p class="s-sub reveal">Not icons. Not buzzword lists. Each skill has a context — where I used it, what it produced, why it mattered.</p>
-
-  <div class="sk-grid">
-    <div class="sk-card reveal" style="--w:87%">
-      <div class="sk-head">
-        <div class="sk-ico">⚛</div>
-        <div><div class="sk-name">React.js</div><div class="sk-lvl">Advanced</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Built <strong>this portfolio</strong> — scroll reveals, custom cursor, responsive hero layout. Used in the <strong>Future Interns CRM</strong> for lead pipeline UI with live status updates. Applied in the <strong>business client website</strong> pitched directly to a real owner. React learned exclusively through shipping.</div>
-        <div class="sk-br"><span>Proficiency</span><span>87%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-    <div class="sk-card reveal" style="--w:80%">
-      <div class="sk-head">
-        <div class="sk-ico">⬡</div>
-        <div><div class="sk-name">Node.js + Express</div><div class="sk-lvl">Proficient</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Built REST APIs for the <strong>CRM system</strong> — lead CRUD, status pipeline management, follow-up notes, JWT-secured admin routes. Contact form backend on <strong>this portfolio</strong> with Nodemailer. Backend thinking is shaped by <strong>Aution's B2B data architecture</strong> requirements.</div>
-        <div class="sk-br"><span>Proficiency</span><span>80%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-    <div class="sk-card reveal" style="--w:75%">
-      <div class="sk-head">
-        <div class="sk-ico">🌿</div>
-        <div><div class="sk-name">MongoDB</div><div class="sk-lvl">Proficient</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Designed the <strong>CRM lead database schema</strong> — leads, status history, follow-up notes, admin users. Learned when document modelling outperforms relational tables: flexible early-stage schemas where the data shape is still being discovered through building.</div>
-        <div class="sk-br"><span>Proficiency</span><span>75%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-    <div class="sk-card reveal" style="--w:83%">
-      <div class="sk-head">
-        <div class="sk-ico">◫</div>
-        <div><div class="sk-name">HTML / CSS / JavaScript</div><div class="sk-lvl">Advanced</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Foundation of every project. The <strong>local business website</strong> (Task 3) was pure HTML/CSS/JS — pitched to a real owner and built for their actual business outcome. Custom animations, semantic markup for SEO, and accessible structure throughout every deliverable.</div>
-        <div class="sk-br"><span>Proficiency</span><span>83%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-    <div class="sk-card reveal" style="--w:70%">
-      <div class="sk-head">
-        <div class="sk-ico">◈</div>
-        <div><div class="sk-name">AI / Machine Learning Foundations</div><div class="sk-lvl">Intermediate · Growing</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Academic foundation: ML fundamentals, classification, neural network basics. Applied in early <strong>Personal AI OS research</strong> — pattern recognition, behavioural modelling, context-aware decision layers. AI Engineering is the practice I'm building my entire career toward.</div>
-        <div class="sk-br"><span>Proficiency</span><span>70%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-    <div class="sk-card reveal" style="--w:78%">
-      <div class="sk-head">
-        <div class="sk-ico">⬢</div>
-        <div><div class="sk-name">System Design + Strategy</div><div class="sk-lvl">Intermediate–Advanced</div></div>
-      </div>
-      <div class="sk-body">
-        <div class="sk-ev">Applied in <strong>Aution's B2B architecture</strong> — data flows, client integration points, profit-per-transaction modelling. Also the foundation of every coding project: I diagram the system before I write a line. Strategy and system design are the same skill at different scales.</div>
-        <div class="sk-br"><span>Proficiency</span><span>78%</span></div>
-        <div class="sk-trk"><div class="sk-fill"></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ===== PROJECTS ===== -->
-<section id="projects">
-  <div class="s-label reveal"><span class="s-line"></span>What I've shipped</div>
-  <h2 class="s-title reveal">Projects That <em>Delivered</em></h2>
-  <p class="s-sub reveal">Each built as if for a paying client. Documented, hosted, and real.</p>
-
-  <div class="pj-grid">
-    <div class="pj-card">
-      <div class="pj-thumb"><div class="pj-pat"></div><div class="pj-num">01</div><div class="pj-badge">Live</div></div>
-      <div class="pj-body">
-        <div class="pj-type">// FUTURE_FS_01 · Portfolio</div>
-        <div class="pj-name">Personal Portfolio Website</div>
-        <div class="pj-desc">This site. Face-first hero, story timeline, evidence-based skills, photography section, and Node.js contact API. Built to grow — every section designed to be updated without touching layout. SEO-structured, deployed to Vercel, GitHub-documented.</div>
-        <div class="pj-stack"><span class="pt">React</span><span class="pt">Node.js</span><span class="pt">Express</span><span class="pt">CSS Animations</span><span class="pt">Vercel</span></div>
-        <div class="pj-links">
-          <a href="https://github.com/yourusername/FUTURE_FS_01" target="_blank" class="pl f">GitHub ↗</a>
-          <a href="#" class="pl">Live ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pj-card">
-      <div class="pj-thumb"><div class="pj-pat"></div><div class="pj-num">02</div><div class="pj-badge">Shipped</div></div>
-      <div class="pj-body">
-        <div class="pj-type">// FUTURE_FS_02 · CRM System</div>
-        <div class="pj-name">Lead Management CRM</div>
-        <div class="pj-desc">A CRM built for real business workflow — lead listing from contact forms, status pipeline (new → contacted → converted), per-lead notes and follow-up logging, and JWT-secured admin access. Full CRUD, MongoDB backend, business logic that maps to how sales teams actually work.</div>
-        <div class="pj-stack"><span class="pt">React</span><span class="pt">Node.js</span><span class="pt">Express</span><span class="pt">MongoDB</span><span class="pt">JWT Auth</span></div>
-        <div class="pj-links">
-          <a href="https://github.com/yourusername/FUTURE_FS_02" target="_blank" class="pl f">GitHub ↗</a>
-          <a href="#" class="pl">Demo ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pj-card">
-      <div class="pj-thumb"><div class="pj-pat"></div><div class="pj-num">03</div><div class="pj-badge">Pitched</div></div>
-      <div class="pj-body">
-        <div class="pj-type">// FUTURE_FS_03 · Business Website</div>
-        <div class="pj-name">Local Business Website + Client Pitch</div>
-        <div class="pj-desc">A professional website built for a real local business and pitched directly to the owner. Not just a template — a business solution designed to drive discovery, bookings, and trust. Included a pitch deck explaining exactly how the digital presence solves a commercial problem.</div>
-        <div class="pj-stack"><span class="pt">HTML/CSS/JS</span><span class="pt">Responsive</span><span class="pt">SEO</span><span class="pt">Client Pitch</span></div>
-        <div class="pj-links">
-          <a href="https://github.com/yourusername/FUTURE_FS_03" target="_blank" class="pl f">GitHub ↗</a>
-          <a href="#" class="pl">Live ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pj-card">
-      <div class="pj-thumb"><div class="pj-pat"></div><div class="pj-num">◈</div><div class="pj-badge">In Progress</div></div>
-      <div class="pj-body">
-        <div class="pj-type">// Research · AI Engineering</div>
-        <div class="pj-name">Personal AI OS</div>
-        <div class="pj-desc">Not a chatbot. Not an app. An ambient intelligence layer that learns human behaviour patterns and acts as invisible decision-support infrastructure. If AI has to be opened to be useful, it isn't embedded enough. Open to collaborators building at this intersection of cognition and technology.</div>
-        <div class="pj-stack"><span class="pt">AI/ML</span><span class="pt">Python</span><span class="pt">Node.js</span><span class="pt">System Design</span><span class="pt">Research</span></div>
-        <div class="pj-links">
-          <a href="#contact" class="pl f">Collaborate ↗</a>
-          <a href="#contact" class="pl">Inquire →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ===== PHOTOGRAPHY ===== -->
-<section id="photography">
-  <div class="s-label reveal"><span class="s-line"></span>The other lens</div>
-  <h2 class="s-title reveal">Stomy <em>Photography</em></h2>
-  <p class="s-sub reveal">A client-facing visual media business at UWC. Where people management meets creative delivery.</p>
-
-  <p class="ph-manifesto reveal">
-    We deliver <strong>the vision clients never thought could become media</strong> — 
-    they arrive with a feeling they can't name, 
-    and we hand them back something that makes people stop and say: 
-    <em>"I felt that."</em>
-  </p>
-
-  <div class="ph-grid reveal">
-    <!-- Replace .ph-fb divs with <img src="./assets/photo-N.jpg" alt="..."/> when you have photos -->
-    <div class="ph-cell">
-      <div class="ph-fb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>Add Photo 1</span>
-      </div>
-      <div class="ph-ov"></div><div class="ph-lbl">Portrait</div>
-    </div>
-    <div class="ph-cell">
-      <div class="ph-fb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>Add Photo 2</span>
-      </div>
-      <div class="ph-ov"></div><div class="ph-lbl">Event</div>
-    </div>
-    <div class="ph-cell">
-      <div class="ph-fb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>Add Photo 3</span>
-      </div>
-      <div class="ph-ov"></div><div class="ph-lbl">Culture</div>
-    </div>
-    <div class="ph-cell">
-      <div class="ph-fb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>Add Photo 4</span>
-      </div>
-      <div class="ph-ov"></div><div class="ph-lbl">Graduation</div>
-    </div>
-    <div class="ph-cell">
-      <div class="ph-fb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
-        <span>Add Photo 5</span>
-      </div>
-      <div class="ph-ov"></div><div class="ph-lbl">Commercial</div>
-    </div>
-  </div>
-
-  <div class="ph-cta reveal">
-    <div>
-      <div class="ph-cta-e">// Stomy Photography · Co-associate · UWC</div>
-      <div class="ph-cta-h">See It. Feel It. Keep It Forever.</div>
-      <div class="ph-cta-s">Campus events, portraits, graduations, commercial media — delivered with intent.</div>
-    </div>
-    <a href="#contact" class="ph-cta-btn">Book a Shoot →</a>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ===== RESUME ===== -->
-<section id="resume">
-  <div class="s-label reveal"><span class="s-line"></span>The full picture</div>
-  <h2 class="s-title reveal">Resume &amp; <em>Soft Skills</em></h2>
-  <p class="s-sub reveal">Technical skills are the floor. Character and execution are the ceiling.</p>
-
-  <div class="rs-grid">
-    <div class="reveal">
-      <div class="rs-lbl">What makes the difference</div>
-      <div class="soft">
-        <div class="soft-i">◎</div>
-        <div>
-          <div class="soft-n">First-Principles Thinking</div>
-          <div class="soft-d">I decompose problems until the solution becomes obvious. Demonstrated in Aution's B2B strategy architecture — and in every internship deliverable built backward from the market problem, not forward from available tools.</div>
-        </div>
-      </div>
-      <div class="soft">
-        <div class="soft-i">◈</div>
-        <div>
-          <div class="soft-n">Strategic Directorship</div>
-          <div class="soft-d">One of eight directors at Aution. Real boardroom accountability — I make decisions that affect company revenue, client relationships, and team execution. Not a title, a responsibility.</div>
-        </div>
-      </div>
-      <div class="soft">
-        <div class="soft-i">⬡</div>
-        <div>
-          <div class="soft-n">Client-Facing Delivery</div>
-          <div class="soft-d">Stomy Photography and the Future Interns business website project both required reading what clients can't articulate, then exceeding it. The best deliverable surprises the person who commissioned it.</div>
-        </div>
-      </div>
-      <div class="soft">
-        <div class="soft-i">◐</div>
-        <div>
-          <div class="soft-n">Execution Without Permission</div>
-          <div class="soft-d">Stomy Photography was launched. Aution was formed. This portfolio was built. The gap between idea and shipped is where most people live. I close that gap consistently.</div>
-        </div>
-      </div>
-      <div class="soft">
-        <div class="soft-i">◉</div>
-        <div>
-          <div class="soft-n">People &amp; Team Alignment</div>
-          <div class="soft-d">Managing Stomy Photography clients and co-directing with seven others at Aution requires the same skill: align incentives, understand what people actually need, create conditions for collective output.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <div class="rs-lbl">Download &amp; Connect</div>
-      <p style="font-size:.83rem;color:var(--ash);line-height:1.8;margin-bottom:18px">
-        Full CV includes academic record, project deliverables, Aution directorship details, Stomy Photography, and professional references. Updated continuously as work ships.
-      </p>
-      <!-- UPDATE href when you have your actual CV PDF -->
-      <a href="./assets/advocate-karabo-tladi-cv.pdf" download class="cv-dl">
-        <div class="cv-i">◫</div>
-        <div>
-          <div class="cv-t">Download CV / Resume</div>
-          <div class="cv-s">PDF · Updated 2025 · Full professional record</div>
-        </div>
-        <div class="cv-a">↓</div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
       </a>
 
-      <div class="ot">
-        <div class="ot-h">Currently Open To</div>
-        <div class="ot-row"><span class="ot-dot"></span>AI Engineering internship or junior role — remote or Cape Town</div>
-        <div class="ot-row"><span class="ot-dot"></span>Collaboration on embedded AI and ambient intelligent systems</div>
-        <div class="ot-row"><span class="ot-dot"></span>Hackathon teams building for African market problems</div>
-        <div class="ot-row"><span class="ot-dot"></span>Photography clients — events, portraits, commercial, graduation</div>
-        <div class="ot-row"><span class="ot-dot"></span>Investors and partners aligned with Aution's B2B direction</div>
-      </div>
-    </div>
-  </div>
-</section>
+      <a href="https://linkedin.com/in/advocate-karabo-7550122b3" target="_blank" class="connect-card connect-card--linkedin">
+        <div class="connect-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">LinkedIn</span>
+          <span class="connect-hint">Professional profile & updates</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
 
-<div class="div"></div>
+      <a href="mailto:advocatekarabo09@gmail.com" class="connect-card connect-card--email">
+        <div class="connect-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">Email</span>
+          <span class="connect-hint">For longer conversations</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="s-label reveal"><span class="s-line"></span>Get in touch</div>
-  <h2 class="s-title reveal">Let's Build <em>Something Real</em></h2>
+      <a href="https://github.com/Advoo" target="_blank" class="connect-card connect-card--github">
+        <div class="connect-icon"><i class="fa-brands fa-github"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">GitHub</span>
+          <span class="connect-hint">See how I think in code</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
 
-  <div class="ct-grid">
-    <div class="reveal">
-      <p class="ct-copy">
-        If you're building at the intersection of technology and human experience — 
-        if you're asking the same questions about what markets are ignoring — 
-        I want to hear from you. Not just job offers. Real collaborations. 
-        Ideas that need a systems thinker who can also ship.
-      </p>
-      <div class="ct-links">
-        <a href="mailto:karabo@email.com" class="ct-link">
-          <span class="ct-ico">✉</span>
-          <div><div class="ct-n">Email</div><div class="ct-v">karabo@email.com</div></div>
-        </a>
-        <a href="https://github.com/yourusername" target="_blank" class="ct-link">
-          <span class="ct-ico">⬡</span>
-          <div><div class="ct-n">GitHub</div><div class="ct-v">github.com/yourusername</div></div>
-        </a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="ct-link">
-          <span class="ct-ico">◈</span>
-          <div><div class="ct-n">LinkedIn</div><div class="ct-v">linkedin.com/in/yourprofile</div></div>
-        </a>
-        <a href="https://instagram.com/stomyphotography" target="_blank" class="ct-link">
-          <span class="ct-ico">◩</span>
-          <div><div class="ct-n">Stomy Photography</div><div class="ct-v">@stomyphotography</div></div>
-        </a>
-      </div>
+      <a href="Asserts/CV.pdf" download class="connect-card connect-card--accent">
+        <div class="connect-icon"><i class="fa-solid fa-file-arrow-down"></i></div>
+        <div class="connect-info">
+          <span class="connect-label">Download CV</span>
+          <span class="connect-hint">PDF — updated 2026</span>
+        </div>
+        <i data-lucide="arrow-up-right" class="connect-arrow"></i>
+      </a>
+
     </div>
 
-    <div class="reveal">
-      <form class="ct-form" id="cf" onsubmit="send(event)">
-        <div class="ct-grp">
-          <label class="ct-lab">Your Name</label>
-          <input class="ct-inp" type="text" placeholder="Name" required id="fn"/>
-        </div>
-        <div class="ct-grp">
-          <label class="ct-lab">Email</label>
-          <input class="ct-inp" type="email" placeholder="you@example.com" required id="fe"/>
-        </div>
-        <div class="ct-grp">
-          <label class="ct-lab">What's this about?</label>
-          <input class="ct-inp" type="text" placeholder="Collaboration / AI / Photography / Aution / Role" id="fs"/>
-        </div>
-        <div class="ct-grp">
-          <label class="ct-lab">Message</label>
-          <textarea class="ct-area" placeholder="Tell me what you're building, what you need, or what question you're sitting with..." required id="fm"></textarea>
-        </div>
-        <button type="submit" class="ct-sub" id="cb">Send Message →</button>
-        <div class="ct-msg" id="cs"></div>
-      </form>
-    </div>
-  </div>
-</section>
+    <footer class="site-footer">
+      <p>Built by Advocate Karabo &middot; 2026 &middot; Powered by curiosity and vision</p>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="ft-n">Advocate Karabo Tladi</div>
-    <div class="ft-s">AI Engineer · Director, Aution · Co-associate, Stomy Photography · UWC</div>
-  </div>
-  <div class="ft-r">
-    <div class="ft-repo">// FUTURE_FS_01 · Future Interns Full Stack Track</div>
-    <div class="ft-yr">© 2025 · Built in Cape Town · University of the Western Cape</div>
-  </div>
-</footer>
+    <div class="grain"></div>
+  </section>
 
-<script>
-/* CURSOR */
-const c=document.getElementById('cur'),co=document.getElementById('cur-o');
-let mx=0,my=0,ox=0,oy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px'});
-(function l(){ox+=(mx-ox)*.13;oy+=(my-oy)*.13;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(l)})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
 
-/* NAV */
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>32));
+  <!-- ═══════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Icons ────────────────────────────────
+    lucide.createIcons();
 
-/* MOBILE */
-function tm(){document.getElementById('mob').classList.toggle('open')}
-function cm(){document.getElementById('mob').classList.remove('open')}
+    // ── Theme toggle ─────────────────────────
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
 
-/* REVEAL */
-const ob=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
-},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
-document.querySelectorAll('.reveal,.pj-card,.sk-card').forEach(el=>ob.observe(el));
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
 
-/* Stagger */
-document.querySelectorAll('.sk-grid .sk-card').forEach((c,i)=>c.style.transitionDelay=i*.09+'s');
-document.querySelectorAll('.pj-grid .pj-card').forEach((c,i)=>c.style.transitionDelay=i*.1+'s');
-document.querySelectorAll('.id-cards .id-card').forEach((c,i)=>{
-  c.classList.add('reveal');c.style.transitionDelay=i*.08+'s';ob.observe(c);
-});
+    // ── Page navigation ───────────────────────
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks_ul = document.getElementById('navLinks');
+    const navToggleBtn = document.getElementById('navToggle');
 
-/* Hero entrance */
-window.addEventListener('load',()=>{
-  document.querySelectorAll('#hero .reveal').forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('in'),i*150+280);
-  });
-});
+    function closeMenu() {
+      navLinks_ul.classList.remove('open');
+      navToggleBtn.classList.remove('open');
+    }
 
-/* CONTACT */
-function send(e){
-  e.preventDefault();
-  const btn=document.getElementById('cb'),st=document.getElementById('cs');
-  btn.textContent='Sending…';btn.disabled=true;
-  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      name:document.getElementById('fn').value,
-      email:document.getElementById('fe').value,
-      subject:document.getElementById('fs').value,
-      message:document.getElementById('fm').value
-    })
-  }).catch(()=>({})).finally(()=>{
-    st.style.display='block';
-    st.textContent='✓ Message received. I will be in touch.';
-    document.getElementById('cf').reset();
-    btn.textContent='Send Message →';btn.disabled=false;
-  });
-}
-</script>
+    function navigateTo(pageId) {
+      pages.forEach(p => p.classList.remove('active'));
+      navLinks.forEach(l => l.classList.remove('active'));
+
+      const target = document.getElementById(pageId);
+      if (target) target.classList.add('active');
+
+      const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+      if (activeLink) activeLink.classList.add('active');
+
+      closeMenu();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(link.getAttribute('data-page'));
+      });
+    });
+
+    // Catch href="#" links that reference pages
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const pageId = a.getAttribute('href').replace('#', '');
+        const target = document.getElementById(pageId);
+        if (target && target.classList.contains('page')) {
+          e.preventDefault();
+          navigateTo(pageId);
+        }
+      });
+    });
+
+    // ── Mobile nav toggle ─────────────────────
+    navToggleBtn.addEventListener('click', () => {
+      navLinks_ul.classList.toggle('open');
+      navToggleBtn.classList.toggle('open');
+    });
+
+    // Close menu when tapping outside the navbar
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#navbar')) closeMenu();
+    });
+
+    // ── Skills toggle ─────────────────────────
+    function switchSkills(type) {
+      document.getElementById('skillsTech').classList.toggle('active', type === 'tech');
+      document.getElementById('skillsPersonal').classList.toggle('active', type === 'personal');
+      document.getElementById('btnTech').classList.toggle('active', type === 'tech');
+      document.getElementById('btnPersonal').classList.toggle('active', type === 'personal');
+    }
+
+    // ── Navbar scroll shadow ──────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Re-render icons after page transitions (Lucide needs this)
+    document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+
+    // ── Message Box — WhatsApp compose ───────────
+    (function () {
+      const WA = 'https://wa.me/27656275687?text=';
+      const chips = document.querySelectorAll('.msg-chip');
+      const textarea = document.getElementById('msgTextarea');
+      const btn = document.getElementById('msgSendBtn');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          textarea.value = chip.dataset.msg;
+          textarea.focus();
+          chips.forEach(c => c.classList.remove('msg-chip--active'));
+          chip.classList.add('msg-chip--active');
+        });
+      });
+
+      btn.addEventListener('click', () => {
+        const text = textarea.value.trim();
+        if (!text) {
+          textarea.focus();
+          textarea.classList.add('msg-textarea--error');
+          setTimeout(() => textarea.classList.remove('msg-textarea--error'), 700);
+          return;
+        }
+        window.open(WA + encodeURIComponent(text), '_blank');
+      });
+    })();
+  </script>
+
 </body>
 </html>
