@@ -653,131 +653,63 @@ I am particularly motivated by opportunities that combine technical depth with c
       <p>Built by Advocate Karabo &middot; 2026 &middot; Powered by curiosity and vision</p>
     </footer>
 
-    <div class="grain"></div>
-  </section>
+<script>
+/* CURSOR */
+const c=document.getElementById('cur'),co=document.getElementById('cur-o');
+let mx=0,my=0,ox=0,oy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px'});
+(function l(){ox+=(mx-ox)*.13;oy+=(my-oy)*.13;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(l)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
 
+/* NAV */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>32));
 
-  <!-- ═══════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════ -->
-  <script>
-    // ── Icons ────────────────────────────────
-    lucide.createIcons();
+/* MOBILE */
+function tm(){document.getElementById('mob').classList.toggle('open')}
+function cm(){document.getElementById('mob').classList.remove('open')}
 
-    // ── Theme toggle ─────────────────────────
-    const html = document.documentElement;
-    const themeBtn = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', savedTheme);
-    themeBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+/* REVEAL */
+const ob=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal,.pj-card,.sk-card').forEach(el=>ob.observe(el));
 
-    themeBtn.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
-    });
+/* Stagger */
+document.querySelectorAll('.sk-grid .sk-card').forEach((c,i)=>c.style.transitionDelay=i*.09+'s');
+document.querySelectorAll('.pj-grid .pj-card').forEach((c,i)=>c.style.transitionDelay=i*.1+'s');
+document.querySelectorAll('.id-cards .id-card').forEach((c,i)=>{
+  c.classList.add('reveal');c.style.transitionDelay=i*.08+'s';ob.observe(c);
+});
 
-    // ── Page navigation ───────────────────────
-    const pages = document.querySelectorAll('.page');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navLinks_ul = document.getElementById('navLinks');
-    const navToggleBtn = document.getElementById('navToggle');
+/* Hero entrance */
+window.addEventListener('load',()=>{
+  document.querySelectorAll('#hero .reveal').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('in'),i*150+280);
+  });
+});
 
-    function closeMenu() {
-      navLinks_ul.classList.remove('open');
-      navToggleBtn.classList.remove('open');
-    }
-
-    function navigateTo(pageId) {
-      pages.forEach(p => p.classList.remove('active'));
-      navLinks.forEach(l => l.classList.remove('active'));
-
-      const target = document.getElementById(pageId);
-      if (target) target.classList.add('active');
-
-      const activeLink = document.querySelector(`[data-page="${pageId}"]`);
-      if (activeLink) activeLink.classList.add('active');
-
-      closeMenu();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigateTo(link.getAttribute('data-page'));
-      });
-    });
-
-    // Catch href="#" links that reference pages
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const pageId = a.getAttribute('href').replace('#', '');
-        const target = document.getElementById(pageId);
-        if (target && target.classList.contains('page')) {
-          e.preventDefault();
-          navigateTo(pageId);
-        }
-      });
-    });
-
-    // ── Mobile nav toggle ─────────────────────
-    navToggleBtn.addEventListener('click', () => {
-      navLinks_ul.classList.toggle('open');
-      navToggleBtn.classList.toggle('open');
-    });
-
-    // Close menu when tapping outside the navbar
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#navbar')) closeMenu();
-    });
-
-    // ── Skills toggle ─────────────────────────
-    function switchSkills(type) {
-      document.getElementById('skillsTech').classList.toggle('active', type === 'tech');
-      document.getElementById('skillsPersonal').classList.toggle('active', type === 'personal');
-      document.getElementById('btnTech').classList.toggle('active', type === 'tech');
-      document.getElementById('btnPersonal').classList.toggle('active', type === 'personal');
-    }
-
-    // ── Navbar scroll shadow ──────────────────
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Re-render icons after page transitions (Lucide needs this)
-    document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
-
-    // ── Message Box — WhatsApp compose ───────────
-    (function () {
-      const WA = 'https://wa.me/27656275687?text=';
-      const chips = document.querySelectorAll('.msg-chip');
-      const textarea = document.getElementById('msgTextarea');
-      const btn = document.getElementById('msgSendBtn');
-
-      chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-          textarea.value = chip.dataset.msg;
-          textarea.focus();
-          chips.forEach(c => c.classList.remove('msg-chip--active'));
-          chip.classList.add('msg-chip--active');
-        });
-      });
-
-      btn.addEventListener('click', () => {
-        const text = textarea.value.trim();
-        if (!text) {
-          textarea.focus();
-          textarea.classList.add('msg-textarea--error');
-          setTimeout(() => textarea.classList.remove('msg-textarea--error'), 700);
-          return;
-        }
-        window.open(WA + encodeURIComponent(text), '_blank');
-      });
-    })();
-  </script>
-
+/* CONTACT */
+function send(e){
+  e.preventDefault();
+  const btn=document.getElementById('cb'),st=document.getElementById('cs');
+  btn.textContent='Sending…';btn.disabled=true;
+  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      name:document.getElementById('fn').value,
+      email:document.getElementById('fe').value,
+      subject:document.getElementById('fs').value,
+      message:document.getElementById('fm').value
+    })
+  }).catch(()=>({})).finally(()=>{
+    st.style.display='block';
+    st.textContent='✓ Message received. I will be in touch.';
+    document.getElementById('cf').reset();
+    btn.textContent='Send Message →';btn.disabled=false;
+  });
+}
+</script>
 </body>
 </html>
